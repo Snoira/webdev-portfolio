@@ -57,12 +57,34 @@ import Layout from "../layouts/Layout.astro";
 					</div>
 				</div>
 			</section>
-			<section>
+			<section class="projects">
 				<h2>Projects</h2>
-				<p>
-					Here are some of the projects I've worked on recently. Feel
-					free to check them out!
-				</p>
+				<div class="grid">
+					<article class="card" style="--bg-color: #ffdddd">
+						<h3>Project 1</h3>
+						<p>
+							A brief description of Project 1. This project
+							involved...
+						</p>
+						<p>Tech stack: Astro, TailwindCSS, JavaScript</p>
+					</article>
+					<article class="card" style="--bg-color: #ddffdd">
+						<h3>Project 2</h3>
+						<p>
+							A brief description of Project 2. This project
+							involved...
+						</p>
+						<p>Tech stack: Astro, TailwindCSS, JavaScript</p>
+					</article>
+					<article class="card" style="--bg-color: #ddddff">
+						<h3>Project 3</h3>
+						<p>
+							A brief description of Project 3. This project
+							involved...
+						</p>
+						<p>Tech stack: Astro, TailwindCSS, JavaScript</p>
+					</article>
+				</div>
 			</section>
 			<section>
 				<h2>About Me</h2>
@@ -86,8 +108,7 @@ import Layout from "../layouts/Layout.astro";
 		padding: 0;
 	}
 	main {
-		height: 100vh;
-		background-color: #f0f0f0;
+		/* background-color: #f0f0f0; */
 	}
 	.hero-content {
 		display: grid;
@@ -115,10 +136,58 @@ import Layout from "../layouts/Layout.astro";
 			}
 		}
 	}
-	.hero{
-		height: 100dvh;
+
+	section.hero {
+		height: 80dvh;
 		display: grid;
 		place-items: center;
 		padding: 0 5rem;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+
+	.card {
+		aspect-ratio: 1 / 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 2rem;
+		box-shadow: 0 0px 3px rgba(0, 0, 0, 0.1);
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+		cursor: pointer;
+		background-color: var(--bg-color, #ffffff);
+		&:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+		}
+		& h3 {
+			margin: 0;
+			font-size: 1.5rem;
+		}
+		& p {
+			font-size: 1rem;
+			color: #555;
+		}
+	}
+
+	.projects {
+		background-color: #fafafa;
+		& h2 {
+			font-size: 2.5rem;
+			margin-bottom: 2rem;
+		}
+	}
+
+	section {
+		padding: 4rem 5rem;
+		outline: 1px solid red;
 	}
 </style>
