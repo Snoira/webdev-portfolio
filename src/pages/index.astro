@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -16,13 +17,16 @@ import Layout from "../layouts/Layout.astro";
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<Header />
+		<!-- <Header /> -->
 		<main>
 			<section class="hero">
 				<div class="hero-content">
 					<h1>Hello</h1>
 					<p>
-						My name is Nora, and I'm a junior fullstack developer
+						My name is <span class="highlight name">Nora</span>, and
+						I'm a <span class="highlight role"
+							>junior fullstack developer</span
+						>
 						who's looking for new opportunities.
 					</p>
 					<div class="socials">
@@ -61,30 +65,9 @@ import Layout from "../layouts/Layout.astro";
 			<section class="projects">
 				<h2>Projects</h2>
 				<div class="grid">
-					<article class="card" style="--bg-color: #ffdddd">
-						<h3>Project 1</h3>
-						<p>
-							A brief description of Project 1. This project
-							involved...
-						</p>
-						<p>Tech stack: Astro, TailwindCSS, JavaScript</p>
-					</article>
-					<article class="card" style="--bg-color: #ddffdd">
-						<h3>Project 2</h3>
-						<p>
-							A brief description of Project 2. This project
-							involved...
-						</p>
-						<p>Tech stack: Astro, TailwindCSS, JavaScript</p>
-					</article>
-					<article class="card" style="--bg-color: #ddddff">
-						<h3>Project 3</h3>
-						<p>
-							A brief description of Project 3. This project
-							involved...
-						</p>
-						<p>Tech stack: Astro, TailwindCSS, JavaScript</p>
-					</article>
+					<ProjectCard />
+					<ProjectCard />
+					<ProjectCard />
 				</div>
 			</section>
 			<section class="about">
@@ -96,12 +79,12 @@ import Layout from "../layouts/Layout.astro";
 						recently graduated from Nackademin&#39;s Fullstack Web
 						Development program, which concluded with a six-month
 						internship at Funnel.
-						<br /><br />
-						Before becoming a developer, I set out to tackle global issues
+						<!-- <br /><br /> -->
+						<!-- Before becoming a developer, I set out to tackle global issues
 						by studying Environmental Science, including biology and
 						geography. Eventually, I realized I preferred solving smaller,
 						more hands-on problems in code, as well as the collaborative
-						nature of being a developer, which led me to change direction.
+						nature of being a developer, which led me to change direction. -->
 						<br /><br />
 						Other than coding, I've also found an interest in web design
 						and user experience (UX). I'm excited to explore this further
@@ -144,28 +127,42 @@ import Layout from "../layouts/Layout.astro";
 	body {
 		width: 100%;
 		min-height: 100%;
-	}		
+		--black: #2b323f;
+		--white: #fdfcfa;
+		background: var(--white);
+		color: var(--black);
+		font-family: Arial, Helvetica, sans-serif;
+	}
 	* {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
-	body {
-		display: flex;
-		flex-direction: column;
-	}	
-	main {
-		flex: 1;
+
+	h2 {
+		font-size: clamp(1.6rem, 4vw, 2rem);
 	}
+	p {
+		font-size: clamp(1rem, 2vw, 1.25rem);
+		line-height: 1.6;
+	}
+
 	.hero-content {
 		display: grid;
 		justify-content: center;
 		& h1 {
-			font-size: 4rem;
+			font-size: clamp(3rem, 5vw, 4rem);
 		}
 		& p {
-			font-size: 2.5rem;
-			max-width: 960px;
+			font-size: clamp(1.9rem, 3vw, 2.5rem);
+			max-width: 970px;
+
+			& .highlight {
+				background-color: #ffeb3b;
+				padding: 0 0.5rem;
+				border-radius: 4px;
+				font-weight: bold;
+			}
 		}
 		& .socials {
 			justify-self: flex-end;
@@ -185,10 +182,9 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	section.hero {
-		height: 80dvh;
+		height: 70dvh;
 		display: grid;
 		place-items: center;
-		padding: 0 5rem;
 	}
 
 	.grid {
@@ -197,65 +193,40 @@ import Layout from "../layouts/Layout.astro";
 		gap: 2rem;
 	}
 
-	.card {
-		aspect-ratio: 1 / 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		align-items: flex-start;
-		gap: 1rem;
-		padding: 2rem;
-		box-shadow: 0 0px 3px rgba(0, 0, 0, 0.1);
-		transition:
-			transform 0.3s ease,
-			box-shadow 0.3s ease;
-		cursor: pointer;
-		background-color: var(--bg-color, #ffffff);
-		&:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-		}
-		& h3 {
-			margin: 0;
-			font-size: 1.5rem;
-		}
-		& p {
-			font-size: 1rem;
-			color: #555;
-		}
-	}
-
 	.projects {
 		background-color: #fafafa;
-		& h2 {
-			font-size: 2.5rem;
-			margin-bottom: 2rem;
-		}
 	}
 
 	.about {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
+		display: flex;
 		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap-reverse;
 		gap: 2rem;
-		max-width: 1000px;
 		margin: 0 auto;
+
 		& .about-text {
-			& h2 {
-				font-size: 2.5rem;
-				margin-bottom: 1rem;
-			}
+			max-width: 650px;
+			min-width: 300px;
+			flex: 1;
+			padding: 0;
+
 			& p {
-				font-size: 1.2rem;
-				color: #555;
+				margin-top: 1rem;
 			}
 		}
-		& .about-image {
+		& .about-image { 
+			width: 300px;
+			aspect-ratio: 1 / 1;
+			display: grid;
+			place-items: center;
+			border: 1px solid #ddd;
 			& .placeholder {
 				border-radius: 8px;
 				background-color: #ccc;
-				width: 100%;
-				height: 300px;
+				/* width: 200px; */
+				width: 70%;
+				aspect-ratio: 1 / 1;
 			}
 		}
 	}
@@ -265,29 +236,22 @@ import Layout from "../layouts/Layout.astro";
 		justify-items: center;
 		max-width: 800px;
 		margin: 0 auto;
-		& h2 {
-			font-size: 2.5rem;
-			margin-bottom: 1rem;
-		}
-		& p {
-			font-size: 1.2rem;
-			color: #555;
-		}
 		& .contact-form {
 			display: grid;
 			gap: 1rem;
-			margin-top: 2rem;
-			max-width: 600px;
 			width: 100%;
+			max-width: 600px;
+			margin-top: 2rem;
 			margin-bottom: 5rem;
 			& button {
-				padding: 0.75rem 1.5rem;
-				background-color: #007bff;
-				color: white;
+				padding: 1rem 2rem;
+				background-color: var(--black);
+				color: var(--white);
 				border: none;
 				border-radius: 4px;
 				cursor: pointer;
 				transition: background-color 0.3s ease;
+				font-size: 1rem;
 				&:hover {
 					background-color: #0056b3;
 				}
@@ -298,6 +262,7 @@ import Layout from "../layouts/Layout.astro";
 				gap: 0.5rem;
 				& label {
 					font-weight: bold;
+					text-transform: uppercase;
 				}
 				& input,
 				& textarea {
@@ -314,5 +279,53 @@ import Layout from "../layouts/Layout.astro";
 
 	section {
 		padding: 4rem 5rem;
+	}
+
+	@media screen and (max-width: 650px) {
+		h2{
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+		}
+		p {
+			font-size: clamp(1rem, 2vw, 1.5rem);
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+		.hero-content {
+			padding: 0 1rem;
+			& h1 {
+				font-size: 6vw;
+				font-size: 2.5rem;
+				font-size: 2rem;
+				font-size: clamp(2rem, 6vw, 2.5rem);
+			}
+			& p {
+				font-size: 1.2rem;
+				font-size: clamp(1.2rem, 3.7vw, 1.5rem);
+				& .highlight {
+					padding: 0 0.3rem;
+				}
+			}
+			& .socials {
+				gap: 0.5rem;
+				& svg {
+					width: 2rem;
+					height: 2rem;
+				}
+			}
+		}
+		.about{
+			& .about-image {
+				width: 90%;
+				max-width: 250px;
+			}
+			& .about-text {
+				text-align: center;
+				max-width: 500px;
+			}
+		}
+			section {
+			padding: 2rem;
+		}
 	}
 </style>
