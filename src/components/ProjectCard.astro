@@ -1,0 +1,59 @@
+---
+const { title, description, techStack, cardColor } = Astro.props;
+---
+
+<article>
+    <div class="card" style={`background-color: ${cardColor}`}>
+        <div class="content">
+            <h1>{title}</h1>
+
+            <p>{description}</p>
+            <p><strong>Tech stack:</strong> {techStack}</p>
+        </div>
+    </div>
+</article>
+
+<style>
+    * {
+        /* outline: 1px solid red; */
+        padding: 0;
+    }
+    article{
+        container: card / inline-size;
+        width: 100%;
+        max-width: 500px;
+    }
+    .card {
+        background-color: var(--bg-color, #ffffff);
+        background-color: rgb(210, 253, 216);
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        cursor: pointer;
+        & h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+        & p {
+            width: 100%;
+            font-size: 0.8rem;
+        }
+    }
+
+    @container card (min-width: 400px) {
+        /* .card {
+            aspect-ratio: 2/1;
+            flex-direction: row;
+            align-items: center;
+            & .content {
+                flex: 0 0 50%;
+            }
+        } */
+        
+    }
+</style>

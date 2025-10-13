@@ -65,9 +65,24 @@ import ProjectCard from "../components/ProjectCard.astro";
 			<section class="projects">
 				<h2>Projects</h2>
 				<div class="grid">
-					<ProjectCard />
-					<ProjectCard />
-					<ProjectCard />
+					<ProjectCard
+						title="Mums Filibabba"
+						description="A brief description of Mums Filibabba. "
+						techStack="React, mogoose, node.js, express, JavaScript"
+						cardColor="#DFF2A7"
+					/>
+					<ProjectCard
+						title="YAY BNB"
+						description="A brief description of YAY BNB."
+						techStack="Next.js, TypeScript, tailwindCSS"
+						cardColor="#ccc"
+					/>
+					<ProjectCard
+						title="Portfolio Website"
+						description="A brief description of Portfolio Website."
+						techStack="Astro, CSS, JavaScript"
+						cardColor="#EA8C55"
+					/>
 				</div>
 			</section>
 			<section class="about">
@@ -134,6 +149,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 		font-family: Arial, Helvetica, sans-serif;
 	}
 	* {
+		/* outline: 1px solid green; */
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
@@ -145,6 +161,11 @@ import ProjectCard from "../components/ProjectCard.astro";
 	p {
 		font-size: clamp(1rem, 2vw, 1.25rem);
 		line-height: 1.6;
+	}
+	section {
+		padding: 4rem 5rem;
+		max-width: calc(1500px + 10rem);
+		margin: 0 auto;
 	}
 
 	.hero-content {
@@ -159,6 +180,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 			& .highlight {
 				background-color: #ffeb3b;
+				background-color: #dff2a7;
 				padding: 0 0.5rem;
 				border-radius: 4px;
 				font-weight: bold;
@@ -190,7 +212,11 @@ import ProjectCard from "../components/ProjectCard.astro";
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
+		margin-top: 2rem;
+		justify-content: center;
+
+		/* grid-template-columns: 1fr 1fr 1fr; */
+		/* gap: 1rem; */
 	}
 
 	.projects {
@@ -203,7 +229,6 @@ import ProjectCard from "../components/ProjectCard.astro";
 		justify-content: center;
 		flex-wrap: wrap-reverse;
 		gap: 2rem;
-		margin: 0 auto;
 
 		& .about-text {
 			max-width: 650px;
@@ -215,8 +240,10 @@ import ProjectCard from "../components/ProjectCard.astro";
 				margin-top: 1rem;
 			}
 		}
-		& .about-image { 
-			width: 300px;
+		& .about-image {
+			flex: 0 0 30%;
+			max-width: 300px;
+			min-width: 200px;
 			aspect-ratio: 1 / 1;
 			display: grid;
 			place-items: center;
@@ -235,7 +262,6 @@ import ProjectCard from "../components/ProjectCard.astro";
 		display: grid;
 		justify-items: center;
 		max-width: 800px;
-		margin: 0 auto;
 		& .contact-form {
 			display: grid;
 			gap: 1rem;
@@ -277,12 +303,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 		}
 	}
 
-	section {
-		padding: 4rem 5rem;
-	}
-
-	@media screen and (max-width: 650px) {
-		h2{
+	@media screen and (max-width: 700px) {
+		h2 {
 			font-size: 1.5rem;
 			margin-bottom: 1rem;
 		}
@@ -314,7 +336,9 @@ import ProjectCard from "../components/ProjectCard.astro";
 				}
 			}
 		}
-		.about{
+		.about {
+			flex-direction: column-reverse;
+
 			& .about-image {
 				width: 90%;
 				max-width: 250px;
@@ -324,7 +348,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 				max-width: 500px;
 			}
 		}
-			section {
+		section {
 			padding: 2rem;
 		}
 	}
