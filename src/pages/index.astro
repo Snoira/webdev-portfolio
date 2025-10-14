@@ -17,9 +17,9 @@ import ProjectCard from "../components/ProjectCard.astro";
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<!-- <Header /> -->
+		<Header />
 		<main>
-			<section class="hero">
+			<section class="hero" id="welcome">
 				<div class="hero-content">
 					<h1>Hello</h1>
 					<p>
@@ -62,7 +62,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 					</div>
 				</div>
 			</section>
-			<section class="projects">
+			<section class="projects" id="projects">
 				<h2>Projects</h2>
 				<div class="grid">
 					<ProjectCard
@@ -85,7 +85,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 					/>
 				</div>
 			</section>
-			<section class="about">
+			<section class="about" id="about">
 				<!-- <div class="about-content"> -->
 				<div class="about-text">
 					<h2>About Me</h2>
@@ -111,7 +111,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 				</div>
 				<!-- </div> -->
 			</section>
-			<section class="contact">
+			<section class="contact" id="contact">
 				<h2>Contact Me</h2>
 				<p>
 					Feel free to reach out if you have any questions or would

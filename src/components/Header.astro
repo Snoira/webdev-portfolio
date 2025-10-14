@@ -1,43 +1,141 @@
 ---
+const showNav = false;
+
+
 ---
+
 <header>
-    <h1>Nora Velde</h1>
+    <h1 class="logo">
+        <a href="#welcome">Nora Velde</a>
+    </h1>
     <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/contact">Contact</a></li>
+        <button class="nav-toggle">
+            <div class="bars">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 </header>
 
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+    });
+
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('show');
+        });
+    });
+
+</script>
+
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+
     header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 2rem;
-        background-color: #f8f9fa;
+        background-color: #fdfcfa;
         position: sticky;
         top: 0;
         z-index: 1;
+        max-width: calc(1500px + 10rem);
+        padding: 0 2rem;
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 
     nav ul {
         list-style: none;
         display: flex;
-        gap: 1rem;
-        margin: 0;
-        padding: 0;
+        gap: 1rem; 
+        & a {
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--black);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
-    nav a {
-        text-decoration: none;
-        font-weight: bold;
+    .nav-toggle {
+        display: none;
+        place-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+
+        & div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            & span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                border-radius: 2px;
+                background-color: #333;
+            }
+        }
     }
 
-    nav a:hover {
-        text-decoration: underline;
+    @media (max-width: 700px) {
+        header {
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1rem;
+        }
+        nav .nav-toggle {
+            display: flex;
+        }
+        nav .nav-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            flex-direction: column;
+            border: 1px solid #ddd;
+            width: 100%;
+            height: 100dvh;
+            background-color: #fdfcfa;
+            gap: 0;
+            & li {
+                padding: 1rem;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        nav .nav-menu.show {
+            display: flex;
+        }
     }
 </style>
