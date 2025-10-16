@@ -1,7 +1,8 @@
 ---
 import Header from "../components/Header.astro";
-import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import { Image } from "astro:assets";
+import portrait_outside from "../assets/portrait_outside.jpg";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -106,8 +107,12 @@ import ProjectCard from "../components/ProjectCard.astro";
 						and incorporate design principles into my development work.
 					</p>
 				</div>
-				<div class="about-image">
-					<div class="placeholder"></div>
+				<div class="image-container">
+					<Image
+						src={portrait_outside}
+						alt="Portrait of Nora outside"
+						class="about-image"
+					/>
 				</div>
 				<!-- </div> -->
 			</section>
@@ -173,18 +178,15 @@ import ProjectCard from "../components/ProjectCard.astro";
 		display: grid;
 		justify-content: center;
 		& h1 {
-			/* font-size: clamp(3rem, 5vw, 4rem); */
 			font-size: clamp(2rem, 6vw, 2.5rem);
 		}
 		& p {
-			/* font-size: clamp(1.9rem, 3vw, 2.5rem); */
 			font-size: clamp(1.2rem, 3.7vw, 1.5rem);
 			max-width: 970px;
 
 			& .highlight {
 				background-color: #ffeb3b;
 				background-color: #dff2a7;
-				/* padding: 0 0.5rem; */
 				padding: 0 0.3rem;
 				border-radius: 4px;
 				font-weight: bold;
@@ -194,11 +196,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 			justify-self: flex-end;
 			display: flex;
 			flex-direction: column;
-			/* gap: 1rem; */
 			gap: 0.5rem;
 			& svg {
-				/* width: 3rem;
-				height: 3rem; */
 				width: 2rem;
 				height: 2rem;
 				cursor: pointer;
@@ -247,19 +246,21 @@ import ProjectCard from "../components/ProjectCard.astro";
 				margin-top: 1rem;
 			}
 		}
-		& .about-image {
+		& .image-container {
 			width: 90%;
 			max-width: 250px;
-
 			aspect-ratio: 1 / 1;
 			display: grid;
 			place-items: center;
-			border: 1px solid #ddd;
-			& .placeholder {
-				border-radius: 8px;
-				background-color: #ccc;
-				width: 70%;
+			& .about-image {
+				border-radius: 50%;
+				width: 99%;
+				max-width: 300px;
+				height: auto;
 				aspect-ratio: 1 / 1;
+				object-fit: cover;
+				/* border: 1px solid #615bc5; */
+				box-shadow: 0 0 1px #615bc5;
 			}
 		}
 	}
@@ -310,7 +311,6 @@ import ProjectCard from "../components/ProjectCard.astro";
 	}
 
 	@media screen and (min-width: 700px) {
-
 		h2 {
 			font-size: clamp(1.6rem, 4vw, 2rem);
 		}
@@ -337,12 +337,12 @@ import ProjectCard from "../components/ProjectCard.astro";
 				}
 			}
 		}
-		
+
 		.about {
 			flex-direction: row;
 			flex-wrap: wrap-reverse;
 
-			& .about-image {
+			& .image-container {
 				flex: 0 0 30%;
 				max-width: 300px;
 				min-width: 200px;
@@ -354,7 +354,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 				flex: 1;
 			}
 		}
-		section, .projects {
+		section,
+		.projects {
 			padding: 4rem 5rem;
 			max-width: calc(1500px + 10rem);
 			margin: 0 auto;
