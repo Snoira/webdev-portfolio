@@ -29,6 +29,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["astro", "npm:5.14.3"],\
+          ["sharp", "npm:0.34.4"],\
           ["webdev-portfolio", "workspace:."]\
         ],\
         "linkType": "SOFT"\
@@ -4511,6 +4512,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["astro", "npm:5.14.3"],\
+          ["sharp", "npm:0.34.4"],\
           ["webdev-portfolio", "workspace:."]\
         ],\
         "linkType": "SOFT"\

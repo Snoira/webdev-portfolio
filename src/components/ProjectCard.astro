@@ -1,24 +1,64 @@
 ---
-const { title, description, techStack, cardColor } = Astro.props;
+interface Props {
+    title: string;
+    description: string;
+    techStack: string;
+    cardColor?: string;
+    githubUrl?: string;
+}
+
+const { title, description, techStack, cardColor, githubUrl } = Astro.props;
 ---
 
 <article>
-    <div class="card" style={`background-color: ${cardColor}`}>
+    <div class="card" style={`background-color: ${cardColor ?? "#ccc"}`}>
         <div class="content">
             <h1>{title}</h1>
-
             <p>{description}</p>
             <p><strong>Tech stack:</strong> {techStack}</p>
+
+            {
+                githubUrl && (
+                    <div class="project-links">
+                        <a
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="github-link"
+                        >
+                            View on GitHub
+                            <span>
+                                <svg
+                                    class="w-6 h-6 text-gray-800 dark:text-white"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"
+                                    />
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                )
+            }
         </div>
     </div>
 </article>
 
 <style>
     * {
-        /* outline: 1px solid red; */
         padding: 0;
     }
-    article{
+    article {
         container: card / inline-size;
         width: 100%;
         max-width: 500px;
@@ -33,27 +73,42 @@ const { title, description, techStack, cardColor } = Astro.props;
         align-items: flex-start;
         gap: 1rem;
         padding: 1rem;
-        cursor: pointer;
+        /* cursor: pointer; */
         & h1 {
             margin: 0;
-            font-size: 1.2rem;
-            width: 100%;
+            font-size: clamp(1.2rem, 6cqw, 1.5rem);
         }
         & p {
-            width: 100%;
-            font-size: 0.8rem;
+            font-size: clamp(0.8rem, 3.7cqw, 1rem);
         }
     }
 
-    @container card (min-width: 400px) {
-        /* .card {
-            aspect-ratio: 2/1;
-            flex-direction: row;
-            align-items: center;
-            & .content {
-                flex: 0 0 50%;
+    .project-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: inherit;
+        font-size: clamp(0.8rem, 3.7cqw, 1rem);
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        & span svg {
+            width: 1.2em;
+            height: 1.2em;
+        }
+        &:hover {
+           text-decoration: underline;
+        }
+    }
+
+    @container card ( min-width: 400px ) {
+        .card {
+            & h1 {
+                font-size: 1.5rem;
             }
-        } */
-        
+            & p {
+                font-size: 1rem;
+            }
+        }
     }
 </style>

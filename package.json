@@ -9,7 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.14.3"
+    "astro": "^5.14.3",
+    "sharp": "^0.34.4"
   },
   "packageManager": "yarn@4.10.3"
 }

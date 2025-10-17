@@ -3356,7 +3356,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.34.0":
+"sharp@npm:^0.34.0, sharp@npm:^0.34.4":
   version: 0.34.4
   resolution: "sharp@npm:0.34.4"
   dependencies:
@@ -4041,6 +4041,7 @@ __metadata:
   resolution: "webdev-portfolio@workspace:."
   dependencies:
     astro: "npm:^5.14.3"
+    sharp: "npm:^0.34.4"
   languageName: unknown
   linkType: soft
 
