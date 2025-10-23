@@ -8,7 +8,12 @@
         than coding, I enjoy exploring web design and user experience (UX) principles
         to enhance the overall quality of my projects.
     </p>
-    <h1 class="name">Nora Velde</h1>
+    <h1 class="name-container">
+        <span class="sun"></span>
+        <span class="name">
+            Nora Velde
+        </span>
+    </h1>
 </div>
 <style>
     div {
@@ -22,14 +27,29 @@
     .name {
         font-weight: lighter;
         font-size: clamp(3rem, 6vw, 4rem);
+        /* font-size: clamp(2rem, 6vw, 4rem); small screen 2? fixa width.*/
         line-height: 1.1;
         padding: 1rem 0;
-    }
-    .name {
-        justify-self: flex-end;
     }
     .role {
         display: inline-block;
         max-width: 500px;
+        /* max-width: 250px; small screen?*/
+    }
+    .name-container {
+        justify-self: flex-end;
+        position: relative;
+    }
+    .sun {
+        position: absolute;
+        height: 175%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: #FFBB00;
+        transform: translate(-50%, -22%);
+    }
+    .name{
+        position: relative;
+        z-index: 1;
     }
 </style>
