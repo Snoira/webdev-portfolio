@@ -3,6 +3,10 @@ import Header from "../components/Header.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { Image } from "astro:assets";
 import portrait_outside from "../assets/portrait_outside.jpg";
+import portrait_1 from "../assets/about/portrait_1.PNG";
+import portrait_2 from "../assets/about/portrait_2.PNG";
+import portrait_3 from "../assets/about/portrait_3.PNG";
+import portrait_4 from "../assets/about/portrait_4.PNG";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -104,6 +108,28 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 			</section>
 			<section class="about" id="about">
 				<!-- <div class="about-content"> -->
+				<div class="image-container">
+					<Image
+						src={portrait_1}
+						alt="Portrait of Nora trying to be serious"
+						class="about-image"
+					/>
+					<Image
+						src={portrait_2}
+						alt="Portrait of Nora starting to crack a smile"
+						class="about-image"
+					/>
+					<Image
+						src={portrait_3}
+						alt="Portrait of Nora starting to laugh"
+						class="about-image"
+					/>
+					<Image
+						src={portrait_4}
+						alt="Portrait of Nora laughing"
+						class="about-image"
+					/>
+				</div>
 				<div class="about-text">
 					<h2>About Me</h2>
 					<p>
@@ -123,13 +149,7 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 						and incorporate design principles into my development work.
 					</p>
 				</div>
-				<div class="image-container">
-					<Image
-						src={portrait_outside}
-						alt="Portrait of Nora outside"
-						class="about-image"
-					/>
-				</div>
+
 				<!-- </div> -->
 			</section>
 			<section class="contact" id="contact">
@@ -138,7 +158,12 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 					Feel free to reach out if you have any questions or would
 					like to connect!
 				</p>
-				<form class="contact-form" name="contact" method="POST" data-netlify="true">
+				<form
+					class="contact-form"
+					name="contact"
+					method="POST"
+					data-netlify="true"
+				>
 					<div>
 						<label for="name">Name:</label>
 						<input type="text" id="name" name="name" required />
@@ -206,7 +231,7 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 				border-radius: 4px;
 				font-weight: bold;
 			}
-			& .role{
+			& .role {
 				font-weight: bold;
 				text-decoration: underline;
 			}
@@ -266,7 +291,7 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		gap: 2rem;
 
 		& .about-text {
@@ -284,15 +309,16 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 			aspect-ratio: 1 / 1;
 			display: grid;
 			place-items: center;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			gap: 0.5rem;
 			& .about-image {
-				border-radius: 50%;
-				width: 99%;
-				max-width: 300px;
+				width: 100%;
 				height: auto;
 				aspect-ratio: 1 / 1;
 				object-fit: cover;
-				/* border: 1px solid #615bc5; */
-				box-shadow: 0 0 1px #615bc5;
+				filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
 			}
 		}
 	}
@@ -369,7 +395,8 @@ import portrait_outside from "../assets/portrait_outside.jpg";
 
 		.about {
 			flex-direction: row;
-			flex-wrap: wrap-reverse;
+			flex-wrap: wrap;
+			gap: 4rem;
 
 			& .image-container {
 				flex: 0 0 30%;
