@@ -1,0 +1,35 @@
+<div>
+    <p>
+        <span class="role">Junior fullstack developer</span>
+        Hello! I'm a passionate junior fullstack developer with a keen interest in
+        building engaging and user-friendly web applications. 
+        I believe in good communication
+        and collaboration within teams to create the best possible outcomes. Other
+        than coding, I enjoy exploring web design and user experience (UX) principles
+        to enhance the overall quality of my projects.
+    </p>
+    <h1 class="name">Nora Velde</h1>
+</div>
+<style>
+    div {
+        display: grid;
+        justify-items: flex-start;
+        & p{
+            font-size: clamp(1rem, 2.3vw, 1.5rem);
+        }
+    }
+    .role,
+    .name {
+        font-weight: lighter;
+        font-size: clamp(3rem, 6vw, 4rem);
+        line-height: 1.1;
+        padding: 1rem 0;
+    }
+    .name {
+        justify-self: flex-end;
+    }
+    .role {
+        display: inline-block;
+        max-width: 500px;
+    }
+</style>
