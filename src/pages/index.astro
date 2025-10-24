@@ -2,9 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
+import ProjectsSection from "../components/sections/ProjectsSection.astro";
 import AboutSection from "../components/sections/AboutSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
-import ProjectCard from "../components/ProjectCard.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -14,69 +14,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 <Header />
 <main>
 	<HeroSection />
-	<section class="projects" id="projects">
-		<h2>Projects</h2>
-		<div class="grid">
-			<ProjectCard
-				title="Mums Filibabba"
-				description="An ongoing recipe website project to collect and share recipes of friends and family."
-				techStack="MERN stack, JavaScript, CSS. Formik + yup for form handling and validation. Axios and React Query for API requests and state management. Bcrypt and Jsonwebtoken for authentication."
-				cardColor="#DFF2A7"
-				githubUrl="https://github.com/Snoira/recept_webpage"
-			/>
-			<ProjectCard
-				title="YAY BNB"
-				description="A modern Airbnb-inspired booking platform with responsive design and TypeScript for enhanced type safety."
-				techStack="Next.js, TypeScript, TailwindCSS + Shadcn UI. Utilizes Prisma for database management. Zod for type validation."
-				githubUrl="https://github.com/Snoira/Airbnb-project"
-			/>
-			<ProjectCard
-				title="Portfolio Website"
-				description="A personal portfolio built with Astro for showcasing my work."
-				techStack="Astro, CSS, TypeScript, Netlify."
-				cardColor="#EA8C55"
-				githubUrl="https://github.com/Snoira/webdev-portfolio"
-			/>
-		</div>
-	</section>
+	<ProjectsSection />
 	<AboutSection />
 	<ContactSection />
 </main>
 
-<style>
-
-	
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		margin-top: 2rem;
-		justify-content: center;
-	}
-
-	.projects {
-		background-color: #fafafa;
-		padding: 2rem 0;
-		& h2 {
-			padding-left: 2rem;
-		}
-	}
-
-	@media screen and (min-width: 700px) {
-		h2 {
-			font-size: clamp(1.6rem, 4vw, 2rem);
-		}
-		p {
-			font-size: clamp(1rem, 2vw, 1.25rem);
-			line-height: 1.6;
-		}
-		
-
-		section,
-		.projects {
-			padding: 4rem 5rem;
-			max-width: calc(1500px + 10rem);
-			margin: 0 auto;
-		}
-	}
-</style>
