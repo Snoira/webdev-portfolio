@@ -1,0 +1,74 @@
+---
+export interface Props {
+	label: string;
+	id: string;
+	name: string;
+	type?: 'text' | 'email' | 'textarea';
+	required?: boolean;
+	placeholder?: string;
+	value?: string;
+	rows?: number;
+}
+
+const { 
+	label, 
+	id, 
+	name, 
+	type = 'text', 
+	required = false, 
+	placeholder, 
+	value, 
+	rows = 4 
+} = Astro.props;
+---
+
+<div class="input-group">
+	<label for={id}>{label}</label>
+	{type === 'textarea' ? (
+		<textarea 
+			id={id} 
+			name={name} 
+			required={required} 
+			placeholder={placeholder}
+			rows={rows}
+		>{value}</textarea>
+	) : (
+		<input 
+			type={type} 
+			id={id} 
+			name={name} 
+			required={required} 
+			placeholder={placeholder}
+			value={value}
+		/>
+	)}
+</div>
+
+<style>
+	.input-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	
+	label {
+		text-transform: uppercase;
+	}
+	
+	input,
+	textarea {
+		padding: 0.75rem;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		font-size: 1rem;
+		resize: vertical;
+		font-family: inherit;
+	}
+	
+	input:focus,
+	textarea:focus {
+		outline: none;
+		border-color: #007acc;
+		box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+	}
+</style>
