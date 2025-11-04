@@ -4,23 +4,20 @@ import Input from "../ui/Input.astro";
 
 <section class="contact" id="contact">
     <h2>Contact Me</h2>
-    <p>Feel free to reach out if you have any questions or would like to connect!</p>
+    <p>
+        Feel free to reach out if you have any questions or would like to
+        connect!
+    </p>
     <form class="contact-form" name="contact" method="POST" data-netlify="true">
-        <Input 
-            label="Name"
-            id="name"
-            name="name"
-            type="text"
-            required={true}
-        />
-        <Input 
+        <Input label="Name" id="name" name="name" type="text" required={true} />
+        <Input
             label="Email"
             id="email"
             name="email"
             type="email"
             required={true}
         />
-        <Input 
+        <Input
             label="Message"
             id="message"
             name="message"
@@ -37,14 +34,14 @@ import Input from "../ui/Input.astro";
         justify-items: center;
         background-color: #e4eeff;
     }
-    
+
     form {
         display: grid;
         gap: 1rem;
         width: 100%;
         max-width: 600px;
     }
-    
+
     button {
         padding: 1rem 2rem;
         background-color: var(--black);
@@ -55,9 +52,8 @@ import Input from "../ui/Input.astro";
         transition: background-color 0.3s ease;
         font-size: 1rem;
     }
-    
+
     button:hover {
         background-color: #0056b3;
     }
-    
 </style>

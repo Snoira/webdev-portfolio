@@ -307,6 +307,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/libre-baskerville@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "@fontsource/libre-baskerville@npm:5.2.8"
+  checksum: 10c0/aae17e9c183d3eaa8d018b5b9cf816ea09ef23abfcf98fe22069d8d0f32bf7882709d76967bd9329188f0b54869c4fa0e0d83baed6d52162347a10805a6bc48e
+  languageName: node
+  linkType: hard
+
+"@fontsource/libre-franklin@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "@fontsource/libre-franklin@npm:5.2.8"
+  checksum: 10c0/dbcd1afb087ecd852448b24c22857338af2331a3cc358895f1201f0db1f62cd0d2b2c542fa8494222769df9eb5ac8477523616d50359c54d24972587ff37268c
+  languageName: node
+  linkType: hard
+
 "@img/colour@npm:^1.0.0":
   version: 1.0.0
   resolution: "@img/colour@npm:1.0.0"
@@ -4040,6 +4054,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "webdev-portfolio@workspace:."
   dependencies:
+    "@fontsource/libre-baskerville": "npm:^5.2.8"
+    "@fontsource/libre-franklin": "npm:^5.2.8"
     astro: "npm:^5.14.3"
     sharp: "npm:^0.34.4"
   languageName: unknown

@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/libre-baskerville": "^5.2.8",
+    "@fontsource/libre-franklin": "^5.2.8",
     "astro": "^5.14.3",
     "sharp": "^0.34.4"
   },

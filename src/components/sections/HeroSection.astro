@@ -1,55 +1,74 @@
 <section class="hero" id="hero">
-    <p>
-        <span class="role">Junior fullstack developer</span>
-        Hello! I'm a passionate junior fullstack developer with a keen interest in
-        building engaging and user-friendly web applications. 
-        I believe in good communication
-        and collaboration within teams to create the best possible outcomes. Other
-        than coding, I enjoy exploring web design and user experience (UX) principles
-        to enhance the overall quality of my projects.
-    </p>
-    <h1 class="name-container">
-        <span class="sun"></span>
-        <span class="name">
-            Nora Velde
-        </span>
-    </h1>
+        <h1>
+            Hello! I’m
+            <i class="accent-font">Nora</i>,
+            <br>
+            a
+            <i class="accent-font">curious</i>
+            junior fullstack developer
+        </h1>
+        <p>
+            Who also enjoys playing around with
+            <span class="bold">shapes</span>,
+            <span class="color">colors</span> and
+            <i class="accent-font">fonts</i>.
+        </p>
 </section>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .accent-font {
+        font-family: "Libre Baskerville", Georgia, serif;
+        font-weight: 400;
+    }
+    .bold {
+        font-weight: 900;
+    }
+    .color {
+        color: #ff6600;
+        color: #A4D21D;
+    }
+
+    h1 {
+        font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: clamp(2rem, 6vw, 4rem);
+        line-height: 1.2;
+        text-align: center;
+    }
+    p {
+        font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        font-size: clamp(1.25rem, 3.7vw, 2.25rem);
+        line-height: 1.5;
+        text-align: center;
+        color: #757575;
+    }
     .hero {
-        display: grid;
-        justify-items: flex-start;
-        & p{
-            font-size: clamp(1rem, 2.3vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 100px 5%;
+        /* height: 70dvh; */
+    }
+
+    @media (min-width: 550px) {
+        .hero {
+            padding: 150px 10%;
+            align-items: flex-start;
         }
-    }
-    .role,
-    .name {
-        font-weight: lighter;
-        font-size: clamp(3rem, 6vw, 4rem);
-        /* font-size: clamp(2rem, 6vw, 4rem); small screen 2? fixa width.*/
-        line-height: 1.1;
-        padding: 1rem 0;
-    }
-    .role {
-        display: inline-block;
-        max-width: 500px;
-        /* max-width: 250px; small screen?*/
-    }
-    .name-container {
-        justify-self: flex-end;
-        position: relative;
-    }
-    .sun {
-        position: absolute;
-        height: 175%;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        background-color: #FFBB00;
-        transform: translate(-50%, -22%);
-    }
-    .name{
-        position: relative;
-        z-index: 1;
+        h1 {
+            /* font-size: clamp(3rem, 5vw, 5rem); */
+            text-align: left;
+        }
+        p {
+            /* font-size: clamp(1.5rem, 2.5vw, 2.5rem); */
+            text-align: left;
+        }
     }
 </style>
