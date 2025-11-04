@@ -3,13 +3,13 @@ import ProjectCard from "../ProjectCard.astro";
 ---
 
 <section class="projects" id="projects">
-    <h2>Projects</h2>
+    <h2>A few of my <i>favorite</i> projects</h2>
     <div class="grid">
         <ProjectCard
             title="Mums Filibabba"
             description="An ongoing recipe website project to collect and share recipes of friends and family."
             techStack="MERN stack, JavaScript, CSS. Formik + yup for form handling and validation. Axios and React Query for API requests and state management. Bcrypt and Jsonwebtoken for authentication."
-            cardColor="#DFF2A7"
+            cardColor="#B6D494"
             githubUrl="https://github.com/Snoira/recept_webpage"
         />
         <ProjectCard
@@ -17,22 +17,37 @@ import ProjectCard from "../ProjectCard.astro";
             description="A modern Airbnb-inspired booking platform with responsive design and TypeScript for enhanced type safety."
             techStack="Next.js, TypeScript, TailwindCSS + Shadcn UI. Utilizes Prisma for database management. Zod for type validation."
             githubUrl="https://github.com/Snoira/Airbnb-project"
+            cardColor="#CEDAED"
         />
         <ProjectCard
             title="Portfolio Website"
             description="A personal portfolio built with Astro for showcasing my work."
             techStack="Astro, CSS, TypeScript, Netlify."
-            cardColor="#EA8C55"
+            cardColor="#FC7753"
             githubUrl="https://github.com/Snoira/webdev-portfolio"
         />
     </div>
 </section>
 
 <style>
+    .projects {
+        padding: 50px 0;
+        h2 {
+            text-align: center;
+        }
+    }
+
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         margin-top: 2rem;
         justify-content: center;
+    }
+
+    @media screen and (min-width: 700px) {
+        .projects {
+            padding: 50px 5%;
+        }
+        
     }
 </style>
