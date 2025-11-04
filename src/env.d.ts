@@ -81,7 +81,7 @@ declare module "*.jpeg" {
   export default value;
 }
 
-declare module "*.png" {
+declare module "*.PNG" {
   const value: ImageMetadata;
   export default value;
 }

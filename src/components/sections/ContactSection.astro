@@ -1,0 +1,59 @@
+---
+import Input from "../ui/Input.astro";
+---
+
+<section class="contact" id="contact">
+    <h2>Don't be <i>shy</i>, say <i>hi!</i></h2>
+   
+    <form class="contact-form" name="contact" method="POST" data-netlify="true">
+        <Input label="Name" id="name" name="name" type="text" required={true} />
+        <Input
+            label="Email"
+            id="email"
+            name="email"
+            type="email"
+            required={true}
+        />
+        <Input
+            label="Message"
+            id="message"
+            name="message"
+            type="textarea"
+            required={true}
+        />
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<style>
+    .contact {
+        display: grid;
+        justify-items: center;
+        background-color: #CEDAED;
+        padding: 50px 10%;
+    }
+
+    form {
+        display: grid;
+        gap: 1rem;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    button {
+        padding: 1rem 2rem;
+        background-color: #2D3142;
+        background-color: var(--text);
+        color: var(--background);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 1rem;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        background-color: #4F5D75;
+    }
+</style>

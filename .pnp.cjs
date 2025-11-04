@@ -28,6 +28,8 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@fontsource/libre-baskerville", "npm:5.2.8"],\
+          ["@fontsource/libre-franklin", "npm:5.2.8"],\
           ["astro", "npm:5.14.3"],\
           ["sharp", "npm:0.34.4"],\
           ["webdev-portfolio", "workspace:."]\
@@ -398,6 +400,24 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/unplugged/@esbuild-win32-x64-npm-0.25.10-4e12e97189/node_modules/@esbuild/win32-x64/",\
         "packageDependencies": [\
           ["@esbuild/win32-x64", "npm:0.25.10"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@fontsource/libre-baskerville", [\
+      ["npm:5.2.8", {\
+        "packageLocation": "../../../.yarn/berry/cache/@fontsource-libre-baskerville-npm-5.2.8-6e32d10658-10c0.zip/node_modules/@fontsource/libre-baskerville/",\
+        "packageDependencies": [\
+          ["@fontsource/libre-baskerville", "npm:5.2.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@fontsource/libre-franklin", [\
+      ["npm:5.2.8", {\
+        "packageLocation": "../../../.yarn/berry/cache/@fontsource-libre-franklin-npm-5.2.8-5e8215a7fc-10c0.zip/node_modules/@fontsource/libre-franklin/",\
+        "packageDependencies": [\
+          ["@fontsource/libre-franklin", "npm:5.2.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4511,6 +4531,8 @@ const RAW_RUNTIME_STATE =
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@fontsource/libre-baskerville", "npm:5.2.8"],\
+          ["@fontsource/libre-franklin", "npm:5.2.8"],\
           ["astro", "npm:5.14.3"],\
           ["sharp", "npm:0.34.4"],\
           ["webdev-portfolio", "workspace:."]\
