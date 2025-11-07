@@ -1,3 +1,7 @@
+---
+import IconLink from "./ui/IconLink.astro";
+---
+
 <header>
     <h1 class="logo">
         <a href="#hero">Nora Velde</a>
@@ -11,36 +15,48 @@
             </div>
         </button>
         <ul class="nav-menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <div class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </div>
+            <div class="social-links">
+                <li>
+                    <IconLink icon="github" url="https://github.com/snoira" />
+                </li>
+                <li>
+                    <IconLink
+                        icon="linkedin"
+                        url="https://www.linkedin.com/in/nora-velde-440661297/"
+                    />
+                </li>
+            </div>
         </ul>
     </nav>
 </header>
 
 <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector(".nav-toggle");
+    const navMenu = document.querySelector(".nav-menu");
 
-    if(navToggle === null || navMenu === null) {
-        throw new Error('Navigation elements not found');
+    if (navToggle === null || navMenu === null) {
+        throw new Error("Navigation elements not found");
     }
 
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
+    navToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
     });
 
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('show');
+    const navLinks = document.querySelectorAll(".nav-menu a");
+    navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("show");
         });
     });
-
 </script>
 
 <style>
-    a{
+    a {
         text-decoration: none;
         color: inherit;
         text-transform: uppercase;
@@ -67,15 +83,24 @@
     nav ul {
         list-style: none;
         display: flex;
-        gap: 1rem; 
-        & a {
-            text-decoration: none;
-            font-weight: 400;
-            color: var(--text);
-            &:hover {
-                text-decoration: underline;
+        align-items: center;
+
+        & .nav-links {
+            display: flex;
+            gap: 1rem;
+            & a {
+                text-decoration: none;
+                font-weight: 400;
+                color: var(--text);
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
+    }
+
+    .social-links {
+        display: none;
     }
 
     .nav-toggle {
@@ -101,33 +126,45 @@
         }
     }
 
-    @media (max-width: 700px) {
-        .logo {
-            font-size: 1rem;
-        }
+    @media (max-width: 768px) {
         nav .nav-toggle {
             display: flex;
         }
-        nav .nav-menu {
+        nav ul {
             display: none;
             position: absolute;
             right: 0;
-            flex-direction: column;
-            border: 1px solid #ddd;
+            top: 55px;
+            justify-items: start;
+            align-items: end;
             width: 100%;
-            height: 100dvh;
+            height: calc(100dvh - 55px);
             background-color: var(--background);
             gap: 0;
-            & li {
-                padding: 1rem;
-                border-bottom: 1px solid #ddd;
+            /* border: 1px solid #ddd; */
+            padding-left: 2rem;
+            & .nav-links {
+                flex-direction: column;
+                /* width: 100%; */
+                & a {
+                    font-size: clamp(2rem, 7vmin, 3rem);
+                    width: 100%;
+                    /* border: 1px solid green; */
+                }
             }
+           
         }
 
-        nav .nav-menu.show {
+        .social-links {
             display: flex;
+                padding-bottom: 2rem;
+                gap: 1.5rem;
+            }
+
+        nav .nav-menu.show {
+            display: grid;
         }
-        
+
         header {
             padding: 0 20px;
         }
