@@ -8,21 +8,21 @@ import ProjectCard from "../ProjectCard.astro";
         <ProjectCard
             title="Mums Filibabba"
             description="An ongoing recipe website project to collect and share recipes of friends and family."
-            techStack="MERN stack, JavaScript, CSS. Formik + yup for form handling and validation. Axios and React Query for API requests and state management. Bcrypt and Jsonwebtoken for authentication."
+            techStack={["mongoose", "express", "React", "Node.js", "CSS"]}
             cardColor="#B6D494"
             githubUrl="https://github.com/Snoira/recept_webpage"
         />
         <ProjectCard
             title="YAY BNB"
             description="A modern Airbnb-inspired booking platform with responsive design and TypeScript for enhanced type safety."
-            techStack="Next.js, TypeScript, TailwindCSS + Shadcn UI. Utilizes Prisma for database management. Zod for type validation."
+            techStack={["Next.js", "TypeScript", "Prisma", "TailwindCSS", "Shadcn UI"]}
             githubUrl="https://github.com/Snoira/Airbnb-project"
             cardColor="#CEDAED"
         />
         <ProjectCard
             title="Portfolio Website"
             description="A personal portfolio built with Astro for showcasing my work."
-            techStack="Astro, CSS, TypeScript, Netlify."
+            techStack={["Astro", "CSS", "TypeScript", "Netlify"]}
             cardColor="#FC7753"
             githubUrl="https://github.com/Snoira/webdev-portfolio"
         />
@@ -38,8 +38,9 @@ import ProjectCard from "../ProjectCard.astro";
     }
 
     .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         margin-top: 2rem;
         justify-content: center;
     }

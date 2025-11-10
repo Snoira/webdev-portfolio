@@ -1,103 +1,125 @@
 ---
+import IconLink from "./ui/IconLink.astro";
 interface Props {
     title: string;
     description: string;
-    techStack: string;
+    techStack: string[];
     cardColor?: string;
     githubUrl?: string;
+    websiteUrl?: string;
 }
 
-const { title, description, techStack, cardColor, githubUrl } = Astro.props;
+const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
+    Astro.props;
 ---
 
-<article>
-    <div class="card" style={`background-color: ${cardColor ?? "#ccc"}`}>
-        <div class="content">
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <p><strong>Tech stack:</strong> {techStack}</p>
-
+<article style={`background-color: ${cardColor ?? "#ccc"}`}>
+    <div class="content">
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <ul class="tech-stack">
+            <p>tech stack:</p>
             {
-                githubUrl && (
-                    <div class="project-links">
-                        <a
-                            href={githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="github-link"
-                        >
-                            View on GitHub
-                            <span>
-                                <svg
-                                    class="w-6 h-6 text-gray-800 dark:text-white"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"
-                                    />
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
+                Array.isArray(techStack) ? (
+                    techStack.map((tech) => <li>{tech}</li>)
+                ) : (
+                    <li>{techStack}</li>
                 )
             }
-        </div>
+        </ul>
+    </div>
+    <div class="links">
+        {githubUrl && <IconLink icon="github" url={githubUrl} size="small" />}
+        {
+            websiteUrl && (
+                <a
+                    href={websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    Visit website
+                    <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M 9,6 S 15,10.4 15,12 S 15,13.6 9,18 "
+                        />
+                    </svg>
+                </a>
+            )
+        }
     </div>
 </article>
 
 <style>
-    * {
-        padding: 0;
-    }
     article {
         container: card / inline-size;
         width: 100%;
-        max-width: 500px;
-    }
-    .card {
-        background-color: var(--bg-color, #ffffff);
-        background-color: rgb(210, 253, 216);
-        aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1rem;
-        /* cursor: pointer; */
-        & h1 {
-            margin: 0;
-            font-size: clamp(1.2rem, 6cqw, 1.5rem);
+        justify-content: space-between;
+        /* max-width: 500px; */
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    .content {
+        flex: 1;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 1rem;
+    }
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    .tech-stack {
+        margin-top: 1rem;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        & p{
+            margin-right: 0.5rem;
+            font-weight: bold;
         }
-        & p {
-            font-size: clamp(0.8rem, 3.7cqw, 1rem);
+        & li {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
         }
     }
 
-    .project-links a {
-        display: inline-flex;
+    .links {
+        margin-top: 1rem;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 0.5rem;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .project-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         text-decoration: none;
         color: inherit;
         font-size: clamp(0.8rem, 3.7cqw, 1rem);
         font-weight: bold;
         transition: transform 0.2s ease;
-        & span svg {
-            width: 1.2em;
-            height: 1.2em;
-        }
         &:hover {
-           text-decoration: underline;
+            text-decoration: underline;
         }
     }
 
