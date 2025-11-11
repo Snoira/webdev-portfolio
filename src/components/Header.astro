@@ -149,10 +149,11 @@ import IconLink from "./ui/IconLink.astro";
             display: grid;
             justify-items: start;
             align-items: end;
-            position: absolute;
+            position: fixed;
+            top: 60px;
             right: 0;
-            width: 100%;
-            height: calc(100dvh - 50px);
+            width: 100vw;
+            height: calc(100dvh - 60px);
             background-color: var(--background);
             gap: 0;
             padding-left: 2rem;
@@ -172,7 +173,7 @@ import IconLink from "./ui/IconLink.astro";
 
         .social-links {
             display: flex;
-            padding-bottom: 2rem;
+            margin-bottom: 2rem;
             gap: 1.5rem;
         }
 
