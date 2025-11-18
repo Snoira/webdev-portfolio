@@ -3,7 +3,6 @@ import ProjectCard from "../ProjectCard.astro";
 ---
 
 <section class="projects" id="projects">
-    <h2>A few of my <i>favorite</i> projects</h2>
     <div class="grid">
         <ProjectCard
             title="Mums Filibabba"
@@ -15,7 +14,13 @@ import ProjectCard from "../ProjectCard.astro";
         <ProjectCard
             title="YAY BNB"
             description="A modern Airbnb-inspired booking platform with responsive design and TypeScript for enhanced type safety."
-            techStack={["Next.js", "TypeScript", "Prisma", "TailwindCSS", "Shadcn UI"]}
+            techStack={[
+                "Next.js",
+                "TypeScript",
+                "Prisma",
+                "TailwindCSS",
+                "Shadcn UI",
+            ]}
             githubUrl="https://github.com/Snoira/Airbnb-project"
             cardColor="#CEDAED"
         />
@@ -31,10 +36,7 @@ import ProjectCard from "../ProjectCard.astro";
 
 <style>
     .projects {
-        padding: 50px 0;
-        h2 {
-            text-align: center;
-        }
+        position: static;
     }
 
     .grid {
@@ -43,12 +45,8 @@ import ProjectCard from "../ProjectCard.astro";
         gap: 1rem;
         margin-top: 2rem;
         justify-content: center;
+        align-items: center;
+        position: static;
     }
 
-    @media screen and (min-width: 700px) {
-        .projects {
-            padding: 100px 5%;
-        }
-        
-    }
 </style>

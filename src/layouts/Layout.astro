@@ -1,8 +1,10 @@
 ---
-import "@fontsource/libre-baskerville/400.css"
-import "@fontsource/libre-franklin/400.css"
-import "@fontsource/libre-franklin/700.css"
-import "@fontsource/libre-franklin/900.css"
+import "@fontsource/libre-baskerville/400.css";
+import "@fontsource/libre-franklin/400.css";
+import "@fontsource/libre-franklin/700.css";
+import "@fontsource/libre-franklin/900.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
@@ -15,7 +17,13 @@ import "@fontsource/libre-franklin/900.css"
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<main>
+			<div class="container">
+				<slot />
+			</div>
+		</main>
+		<Footer />
 	</body>
 </html>
 
@@ -53,5 +61,34 @@ import "@fontsource/libre-franklin/900.css"
 		overflow: hidden;
 		position: fixed;
 		width: 100%;
+	}
+	.container {
+		padding: 0 5%;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		/* border: 1px solid red;
+		height: calc(100dvh - 60px); */
+	}
+
+	@media (min-width: 768px) {
+		.container {
+			grid-template-columns: 1fr 1fr;
+			& section:nth-child(1){
+				animation: splitScreen 5s ease-in-out 0s 1 normal forwards;
+			}
+			& section:nth-child(n + 3) {
+				grid-column: span 2;
+			}
+		}
+	}
+
+	@keyframes splitScreen {
+		from {
+			grid-column: span 2;
+		}
+		to {
+			grid-column: span 1;
+		}
 	}
 </style>
