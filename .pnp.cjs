@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@fontsource/libre-baskerville", "npm:5.2.8"],\
           ["@fontsource/libre-franklin", "npm:5.2.8"],\
           ["astro", "npm:5.14.3"],\
+          ["gsap", "npm:3.13.0"],\
           ["sharp", "npm:0.34.4"],\
           ["webdev-portfolio", "workspace:."]\
         ],\
@@ -2056,6 +2057,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/graceful-fs-npm-4.2.11-24bb648a68-10c0.zip/node_modules/graceful-fs/",\
         "packageDependencies": [\
           ["graceful-fs", "npm:4.2.11"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["gsap", [\
+      ["npm:3.13.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/gsap-npm-3.13.0-ec0a3ea9e5-10c0.zip/node_modules/gsap/",\
+        "packageDependencies": [\
+          ["gsap", "npm:3.13.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4534,6 +4544,7 @@ const RAW_RUNTIME_STATE =
           ["@fontsource/libre-baskerville", "npm:5.2.8"],\
           ["@fontsource/libre-franklin", "npm:5.2.8"],\
           ["astro", "npm:5.14.3"],\
+          ["gsap", "npm:3.13.0"],\
           ["sharp", "npm:0.34.4"],\
           ["webdev-portfolio", "workspace:."]\
         ],\

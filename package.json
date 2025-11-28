@@ -12,6 +12,7 @@
     "@fontsource/libre-baskerville": "^5.2.8",
     "@fontsource/libre-franklin": "^5.2.8",
     "astro": "^5.14.3",
+    "gsap": "^3.13.0",
     "sharp": "^0.34.4"
   },
   "packageManager": "yarn@4.10.3"

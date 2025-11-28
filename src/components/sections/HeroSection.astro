@@ -1,28 +1,27 @@
 <section class="hero" id="hero">
     <div class="text-container">
-        <!-- add a scetch of a globe or something alluding to hey world? -->
-        <h1>Hello! I’m Nora</h1>
-        <p>
+        <h1 class="text">Hello! I’m Nora</h1>
+        <p class="text">
             A junior full-stack JavaScript developer looking for new
             opportunities.
         </p>
-        <!-- <p class="projects-intro accent-font">
-            Take a look at some of my projects!
-            </p>
-            <svg
+    </div>
+    <!-- <div class="projects-intro">
+        <p class="projects-text">Take a look at some of my projects!</p>
+        <svg
             class="arrow-down"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="70"
             fill="currentColor"
             viewBox="0 0 50 80"
-            >
+        >
             <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1"
-            d="M 24.5,5 
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                d="M 24.5,5 
             L 25.5,5 
             C 30.5,30 31,45.5 26,71.5 
             L 40,50 
@@ -31,9 +30,39 @@
             L 24,71 
             C 28,45 29,30 24.5,5 Z"
             ></path>
-            </svg> -->
-    </div>
+        </svg>
+    </div> -->
 </section>
+
+<script>
+    import { gsap } from "gsap";
+    import { SplitText, type SplitTextInstance } from "gsap/SplitText";
+
+    document.fonts.ready.then(() => {
+        gsap.registerPlugin(SplitText);
+        const split = SplitText.create(".text", {
+            type: "chars",
+            onSplit: (self: SplitTextInstance) => {
+                gsap.from(self.chars, {
+                    yPercent: "random([-100, 100])",
+                    rotation: "random(-30,30)",
+                    ease: "back.out",
+                    autoAlpha: 0,
+                    yoyo: true,
+                    stagger: {
+                        amount: 2,
+                        from: "random",
+                        each: 0.05,
+                    },
+                    onComplete: () => {
+                       split.revert();
+                    },
+                });
+            },
+        });
+    });
+</script>
+
 <style>
     .accent-font {
         font-family: "Libre Baskerville", Georgia, serif;
@@ -68,23 +97,20 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-bottom: 100px;
-        height: calc(100dvh - 60px);
+        height: calc(100dvh - 100px);
+        outline: 1px solid red;
     }
-    .projects-intro {
-        margin-top: 3rem;
+    /* .projects-text {
         font-size: clamp(1.25rem, 3.7vw, 2.25rem);
         font-size: 4vw;
         font-weight: 700;
         color: #333333;
-    }
+    } */
 
-    .arrow-down {
-        margin-top: 1rem;
-    }
-    .text-container {
-        /* animation: moveLeft 3s ease-in-out infinite; */
-    }
+    /* .projects-intro {
+        opacity: 0;
+        margin-top: 2rem;
+    } */
 
     @media (min-width: 768px) {
         h1 {
@@ -96,16 +122,4 @@
         }
     }
 
-    @keyframes moveLeft {
-        0% {
-            transform: scale(1) ;
-        }
-        50% {
-            transform: scale(0.8) ;
-        }
-        100% {
-            transform: scale(0.8);
-        }
-        
-    }
 </style>
