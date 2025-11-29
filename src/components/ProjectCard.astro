@@ -9,78 +9,85 @@ interface Props {
     websiteUrl?: string;
 }
 
+//TODO: fix hover scale?
+
 const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
     Astro.props;
 ---
 
 <article style={`--card-color: ${cardColor ?? "#ccc"}`}>
-    <div class="content">
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <ul class="tech-stack">
-            <p>tech stack:</p>
+    <div class="inner-card">
+        <div class="content">
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <ul class="tech-stack">
+                <p>tech stack:</p>
+                {
+                    Array.isArray(techStack) ? (
+                        techStack.map((tech) => <li>{tech}</li>)
+                    ) : (
+                        <li>{techStack}</li>
+                    )
+                }
+            </ul>
+        </div>
+        <div class="links">
             {
-                Array.isArray(techStack) ? (
-                    techStack.map((tech) => <li>{tech}</li>)
-                ) : (
-                    <li>{techStack}</li>
+                githubUrl && (
+                    <IconLink icon="github" url={githubUrl} size="small" />
                 )
             }
-        </ul>
-    </div>
-    <div class="links">
-        {githubUrl && <IconLink icon="github" url={githubUrl} size="small" />}
-        {
-            websiteUrl && (
-                <a
-                    href={websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="project-link"
-                >
-                    Visit website
-                    <svg
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
+            {
+                websiteUrl && (
+                    <a
+                        href={websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
                     >
-                        <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M 9,6 S 15,10.4 15,12 S 15,13.6 9,18 "
-                        />
-                    </svg>
-                </a>
-            )
-        }
+                        Visit website
+                        <svg
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M 9,6 S 15,10.4 15,12 S 15,13.6 9,18 "
+                            />
+                        </svg>
+                    </a>
+                )
+            }
+        </div>
     </div>
 </article>
 
 <style>
     article {
         container: card / inline-size;
+        display: block;
         width: 95%;
+        border-radius: 8px;
+        background-color: transparent;
+        background-color: var(--card-color);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .inner-card {
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* max-width: 500px; */
         padding: 1.5rem;
-        border-radius: 8px;
-        background-color: transparent;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-
     }
 
-    article:hover {
-        background-color: var(--card-color);
-        scale: 1.02;
-    }
     .content {
         flex: 1;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -88,13 +95,17 @@ const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
     }
     h1 {
         margin-bottom: 0.5rem;
+        font-size: clamp(1.5rem, 6cqw, 2rem);
     }
-
+    p {
+        font-size: clamp(0.9rem, 3cqw, 1rem);
+    }
     .tech-stack {
         margin-top: 1rem;
         list-style: none;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         gap: 0.5rem;
         & p {
             margin-right: 0.5rem;
@@ -104,6 +115,7 @@ const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
             background: rgba(0, 0, 0, 0.1);
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
+            font-size: clamp(0.9rem, 4cqw, 1rem);
         }
     }
 
@@ -132,14 +144,12 @@ const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
         }
     }
 
-    @container card ( min-width: 400px ) {
-        .card {
-            & h1 {
-                font-size: 1.5rem;
-            }
-            & p {
-                font-size: 1rem;
-            }
+    @container card (max-width: 350px) {
+        .inner-card {
+            padding: 1rem 0.5rem;
+        }
+        .content {
+            padding: 1rem;
         }
     }
 </style>

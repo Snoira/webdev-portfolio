@@ -3,17 +3,17 @@ import ProjectCard from "../ProjectCard.astro";
 ---
 
 <section class="projects" id="projects">
-    <div class="grid">
+    <div class="grid scroll-reveal">
         <ProjectCard
             title="Mums Filibabba"
-            description="An ongoing recipe website project to collect and share recipes of friends and family."
+            description="My fist ever full-stack project, now turned into a hobby project with the goal to create a place for close friends and family to share and find recipes. "
             techStack={["mongoose", "express", "React", "Node.js", "CSS"]}
             cardColor="#B6D494"
             githubUrl="https://github.com/Snoira/recept_webpage"
         />
         <ProjectCard
             title="YAY BNB"
-            description="A modern Airbnb-inspired booking platform with responsive design and TypeScript for enhanced type safety."
+            description="An Airbnb-inspired project built with Next.js and TypeScript, featuring user authentication, property listings, and booking functionality."
             techStack={[
                 "Next.js",
                 "TypeScript",
@@ -26,7 +26,7 @@ import ProjectCard from "../ProjectCard.astro";
         />
         <ProjectCard
             title="Portfolio Website"
-            description="A personal portfolio built with Astro for showcasing my work."
+            description="If you're seeing this, you're already here! This portfolio website is built with Astro and showcases my projects and skills as a full-stack developer. I've also incorporated some animations using GSAP to enhance the user experience."
             techStack={["Astro", "CSS", "TypeScript", "Netlify"]}
             cardColor="#FC7753"
             githubUrl="https://github.com/Snoira/webdev-portfolio"
@@ -34,19 +34,47 @@ import ProjectCard from "../ProjectCard.astro";
     </div>
 </section>
 
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    function cardTimeLine(selector: string) {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: selector,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse",
+            },
+        });
+        tl.from(selector, {
+            y: 50,
+            rotation: -10,
+            autoAlpha: 0,
+            stagger: 0.2,
+        });
+
+        return tl;
+    }
+
+    document.fonts.ready.then(() => {
+        cardTimeLine(".grid > article:nth-child(1)");
+        cardTimeLine(".grid > article:nth-child(2)");
+        cardTimeLine(".grid > article:nth-child(3)");
+    });
+</script>
+
 <style>
     .projects {
-        position: static;
+        padding: none;
     }
 
     .grid {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 2rem;
-        justify-content: center;
-        align-items: center;
-        position: static;
+        padding: none;
+        display: grid;
+        justify-items: center;
+        gap: 2rem;
+        overflow: hidden;
     }
-
 </style>
