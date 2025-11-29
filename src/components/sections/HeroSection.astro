@@ -6,8 +6,10 @@
             opportunities.
         </p>
     </div>
-    <!-- <div class="projects-intro">
-        <p class="projects-text">Take a look at some of my projects!</p>
+    <div class="projects-intro">
+        <p class="color accent-font projects-text">
+            <i>Take a look at some of my projects!</i>
+        </p>
         <svg
             class="arrow-down"
             aria-hidden="true"
@@ -31,7 +33,7 @@
             C 28,45 29,30 24.5,5 Z"
             ></path>
         </svg>
-    </div> -->
+    </div>
 </section>
 
 <script>
@@ -41,7 +43,7 @@
     document.fonts.ready.then(() => {
         gsap.registerPlugin(SplitText);
         const split = SplitText.create(".text", {
-            type: "chars",
+            type: "chars, words",
             onSplit: (self: SplitTextInstance) => {
                 gsap.from(self.chars, {
                     yPercent: "random([-100, 100])",
@@ -50,12 +52,12 @@
                     autoAlpha: 0,
                     yoyo: true,
                     stagger: {
-                        amount: 2,
+                        amount: 0.5,
                         from: "random",
                         each: 0.05,
                     },
                     onComplete: () => {
-                       split.revert();
+                        split.revert();
                     },
                 });
             },
@@ -80,14 +82,14 @@
         font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
         font-weight: 700;
         /* font-size: clamp(2rem, 6vw, 4rem); */
-        font-size: 10vw;
+        font-size: 12vw;
         line-height: 1.2;
     }
     p {
         font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
         font-weight: 400;
         font-size: clamp(1.25rem, 3.7vw, 2.25rem);
-        font-size: 4.5vw;
+        font-size: 5vw;
         line-height: 1.5;
         color: #757575;
     }
@@ -97,20 +99,20 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        height: calc(100dvh - 100px);
-        outline: 1px solid red;
+        height: 80dvh;
+        padding: 5rem 1rem 0 1rem;
+        margin-bottom: 4rem;
+        position: relative;
     }
-    /* .projects-text {
-        font-size: clamp(1.25rem, 3.7vw, 2.25rem);
+
+    .projects-text {
+        /* font-size: clamp(1.25rem, 3.5vw, 2rem); */
         font-size: 4vw;
         font-weight: 700;
-        color: #333333;
-    } */
-
-    /* .projects-intro {
-        opacity: 0;
-        margin-top: 2rem;
-    } */
+        margin-bottom: 4rem;
+        margin-top: 3rem;
+        /* color: #333333; */
+    }
 
     @media (min-width: 768px) {
         h1 {
@@ -120,6 +122,8 @@
             font-size: 2.25rem;
             max-width: 700px;
         }
+        .projects-text {
+            font-size: 1.75rem;
+        }
     }
-
 </style>
