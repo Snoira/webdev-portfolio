@@ -73,9 +73,10 @@ import cv from "@assets/documents/CV.pdf";
         text-decoration: none;
         font-weight: 600;
         padding: 0.5rem 1rem;
-        border: 1px solid #536079;
-        background-color: var(--text);
+        border: 1px solid #dd6949;
+        background-color: var(--primary);
         color: var(--background);
+
         border-radius: 4px;
         transition:
             background-color 0.3s ease,
@@ -83,14 +84,13 @@ import cv from "@assets/documents/CV.pdf";
         display: inline-block;
         margin-top: 1rem;
         &:hover {
-            border: 1px solid #dd6949;
-            background-color: var(--primary);
+            border: 1px solid #536079;
+            background-color: var(--text);
             color: var(--background);
         }
     }
 
     h2 {
-        text-align: center;
         font-size: clamp(2rem, 6cqw, 3rem);
     }
     p {
