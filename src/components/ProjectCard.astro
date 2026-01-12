@@ -1,15 +1,7 @@
 ---
 import IconLink from "./ui/IconLink.astro";
-interface Props {
-    title: string;
-    description: string;
-    techStack: string[];
-    cardColor?: string;
-    githubUrl?: string;
-    websiteUrl?: string;
-}
 
-//TODO: fix hover scale?
+interface Props extends ProjectFrontmatter {}
 
 const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
     Astro.props;

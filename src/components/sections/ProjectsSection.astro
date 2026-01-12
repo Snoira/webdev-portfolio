@@ -1,36 +1,22 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
+
+const projects: MarkdownInstance<ProjectFrontmatter>[] = Object.values(
+    import.meta.glob("../../projects/*.md", {
+        eager: true,
+    }),
+);
+
 ---
 
 <section class="projects" id="projects">
+    <h2>My Projects</h2>
     <div class="grid scroll-reveal">
-        <ProjectCard
-            title="Mums Filibabba"
-            description="My fist ever full-stack project, now turned into a hobby project with the goal to create a place for close friends and family to share and find recipes. "
-            techStack={["mongoose", "express", "React", "Node.js", "CSS"]}
-            cardColor="#B6D494"
-            githubUrl="https://github.com/Snoira/recept_webpage"
-        />
-        <ProjectCard
-            title="YAY BNB"
-            description="An Airbnb-inspired project built with Next.js and TypeScript, featuring user authentication, property listings, and booking functionality."
-            techStack={[
-                "Next.js",
-                "TypeScript",
-                "Prisma",
-                "TailwindCSS",
-                "Shadcn UI",
-            ]}
-            githubUrl="https://github.com/Snoira/Airbnb-project"
-            cardColor="#CEDAED"
-        />
-        <ProjectCard
-            title="Portfolio Website"
-            description="If you're seeing this, you're already here! This portfolio website is built with Astro and showcases my projects and skills as a full-stack developer. I've also incorporated some animations using GSAP to enhance the user experience."
-            techStack={["Astro", "CSS", "TypeScript", "Netlify"]}
-            cardColor="#FC7753"
-            githubUrl="https://github.com/Snoira/webdev-portfolio"
-        />
+        {
+            projects.map((project) => (
+                <ProjectCard {...project.frontmatter} />
+            ))
+        }
     </div>
 </section>
 
@@ -62,12 +48,19 @@ import ProjectCard from "../ProjectCard.astro";
         cardTimeLine(".grid > article:nth-child(1)");
         cardTimeLine(".grid > article:nth-child(2)");
         cardTimeLine(".grid > article:nth-child(3)");
+        cardTimeLine(".grid > article:nth-child(4)");
     });
 </script>
 
 <style>
     .projects {
         padding: none;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: clamp(2rem, 6cqw, 3rem);
+        margin-bottom: 3rem;
     }
 
     .grid {
