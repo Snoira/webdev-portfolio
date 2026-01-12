@@ -1,5 +1,9 @@
 ---
 import IconLink from "./ui/IconLink.astro";
+import "@styles/plein.css";
+import Stroke from "@assets/images/stroke.svg";
+
+const sections: string[] = ["About", "Projects", "Contact"];
 ---
 
 <header>
@@ -16,9 +20,19 @@ import IconLink from "./ui/IconLink.astro";
         </button>
         <ul class="nav-menu">
             <div class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                {
+                    sections.map((section, i) => (
+                        <li class="nav-item">
+                            <span
+                                class="background-stroke"
+                                style={`--i: ${i % 2 === 0 ? -1 : 1}`}
+                            >
+                                <Stroke />
+                            </span>
+                            <a href={`#${section.toLowerCase()}`}>{section}</a>
+                        </li>
+                    ))
+                }
             </div>
             <div class="social-links">
                 <li>
@@ -77,7 +91,6 @@ import IconLink from "./ui/IconLink.astro";
     a {
         text-decoration: none;
         color: inherit;
-        text-transform: uppercase;
     }
 
     header {
@@ -94,8 +107,8 @@ import IconLink from "./ui/IconLink.astro";
 
     .logo {
         font-size: 1.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
+        font-weight: 600;
+        font-family: "Plein", Arial, Helvetica, sans-serif;
     }
 
     .nav-menu {
@@ -107,8 +120,28 @@ import IconLink from "./ui/IconLink.astro";
     .nav-links {
         display: flex;
         gap: 1rem;
-        & a:hover {
-            text-decoration: underline;
+    }
+
+    .nav-item {
+        display: grid;
+        place-items: center;
+        position: relative;
+        &:hover .background-stroke {
+            opacity: 0.9;
+        }
+        a {
+            z-index: 1;
+        }
+        & .background-stroke {
+            position: absolute;
+            width: 130%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            transform: rotate(calc(var(--i) * 7deg));
+            path {
+                fill: var(--primary);
+            }
         }
     }
 
