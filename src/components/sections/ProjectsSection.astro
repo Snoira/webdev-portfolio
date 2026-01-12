@@ -6,9 +6,7 @@ const projects: MarkdownInstance<ProjectFrontmatter>[] = Object.values(
         eager: true,
     }),
 );
-
 ---
-
 <section class="projects" id="projects">
     <h2>My Projects</h2>
     <div class="grid scroll-reveal">
@@ -20,41 +18,10 @@ const projects: MarkdownInstance<ProjectFrontmatter>[] = Object.values(
     </div>
 </section>
 
-<script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    gsap.registerPlugin(ScrollTrigger);
-
-    function cardTimeLine(selector: string) {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: selector,
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-            },
-        });
-        tl.from(selector, {
-            y: 50,
-            rotation: -10,
-            autoAlpha: 0,
-            stagger: 0.2,
-        });
-
-        return tl;
-    }
-
-    document.fonts.ready.then(() => {
-        cardTimeLine(".grid > article:nth-child(1)");
-        cardTimeLine(".grid > article:nth-child(2)");
-        cardTimeLine(".grid > article:nth-child(3)");
-        cardTimeLine(".grid > article:nth-child(4)");
-    });
-</script>
-
 <style>
     .projects {
         padding: none;
+        padding: 4rem 0;
     }
 
     h2 {
@@ -67,7 +34,15 @@ const projects: MarkdownInstance<ProjectFrontmatter>[] = Object.values(
         padding: none;
         display: grid;
         justify-items: center;
-        gap: 2rem;
+        row-gap: 2rem;
         overflow: hidden;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    @media screen and (min-width: 768px) {
+        .projects {
+            padding: 6rem 5%;
+        }
+        
     }
 </style>
