@@ -1,21 +1,12 @@
 ---
 import IconLink from "./ui/IconLink.astro";
-interface Props {
-    title: string;
-    description: string;
-    techStack: string[];
-    cardColor?: string;
-    githubUrl?: string;
-    websiteUrl?: string;
-}
 
-//TODO: fix hover scale?
+interface Props extends ProjectFrontmatter {}
 
-const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
-    Astro.props;
+const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
 ---
 
-<article style={`--card-color: ${cardColor ?? "#ccc"}`}>
+<article>
     <div class="inner-card">
         <div class="content">
             <h1>{title}</h1>
@@ -76,8 +67,9 @@ const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
         width: 95%;
         border-radius: 8px;
         background-color: transparent;
-        background-color: var(--card-color);
         border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: #b6d494;
+        max-width: 1000px;
     }
 
     .inner-card {
@@ -140,6 +132,7 @@ const { title, description, techStack, cardColor, githubUrl, websiteUrl } =
         font-weight: bold;
         transition: transform 0.2s ease;
         &:hover {
+            transform: translateY(-2px);
             text-decoration: underline;
         }
     }

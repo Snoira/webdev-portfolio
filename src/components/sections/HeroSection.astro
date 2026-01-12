@@ -1,129 +1,121 @@
+---
+import "../../styles/plein.css";
+import { Image } from "astro:assets";
+import sun from "@assets/images/hero/sun_coral.png";
+import tree from "@assets/images/hero/tree_coral.png";
+import lamp from "@assets/images/hero/lamp_coral.png";
+---
+
 <section class="hero" id="hero">
-    <div class="text-container">
-        <h1 class="text">Hello! I’m Nora</h1>
-        <p class="text">
-            A junior full-stack JavaScript developer looking for new
-            opportunities.
-        </p>
-    </div>
-    <div class="projects-intro">
-        <p class="color accent-font projects-text">
-            <i>Take a look at some of my projects!</i>
-        </p>
-        <svg
-            class="arrow-down"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="70"
-            fill="currentColor"
-            viewBox="0 0 50 80"
-        >
-            <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1"
-                d="M 24.5,5 
-            L 25.5,5 
-            C 30.5,30 31,45.5 26,71.5 
-            L 40,50 
-            Q 27,76.5 24,74.5 
-            Q 21,72.5 14,50 
-            L 24,71 
-            C 28,45 29,30 24.5,5 Z"
-            ></path>
-        </svg>
-    </div>
+    <Image src={sun} alt="Doodle of a sun" class="hero-image hero-image-1" />
+    <Image src={tree} alt="Doodle of a tree" class="hero-image hero-image-2" />
+    <Image
+        src={lamp}
+        alt="Doodle of a lightbulb"
+        class="hero-image hero-image-3"
+    />
+    <h1 class="text">Hello, I’m Nora!</h1>
+    <p>A junior fullstack developer</p>
 </section>
 
-<script>
-    import { gsap } from "gsap";
-    import { SplitText, type SplitTextInstance } from "gsap/SplitText";
-
-    document.fonts.ready.then(() => {
-        gsap.registerPlugin(SplitText);
-        const split = SplitText.create(".text", {
-            type: "chars, words",
-            onSplit: (self: SplitTextInstance) => {
-                gsap.from(self.chars, {
-                    yPercent: "random([-100, 100])",
-                    rotation: "random(-30,30)",
-                    ease: "back.out",
-                    autoAlpha: 0,
-                    yoyo: true,
-                    stagger: {
-                        amount: 0.5,
-                        from: "random",
-                        each: 0.05,
-                    },
-                    onComplete: () => {
-                        split.revert();
-                    },
-                });
-            },
-        });
-    });
-</script>
-
 <style>
-    .accent-font {
-        font-family: "Libre Baskerville", Georgia, serif;
-        font-weight: 400;
-    }
-    .bold {
-        font-weight: 900;
-    }
-    .color {
-        color: #ff6600;
-        color: #a4d21d;
+    h1,
+    p {
+        font-family: "Plein", Arial, Helvetica, sans-serif;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+        z-index: 1;
     }
 
     h1 {
-        font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
-        font-weight: 700;
-        /* font-size: clamp(2rem, 6vw, 4rem); */
+        font-weight: 900;
         font-size: 12vw;
         line-height: 1.2;
     }
+
     p {
-        font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
-        font-weight: 400;
+        font-weight: 600;
         font-size: clamp(1.25rem, 3.7vw, 2.25rem);
         font-size: 5vw;
         line-height: 1.5;
-        color: #757575;
     }
+
     .hero {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        height: 80dvh;
-        padding: 5rem 1rem 0 1rem;
-        margin-bottom: 4rem;
+        min-height: 500px;
         position: relative;
     }
 
-    .projects-text {
-        /* font-size: clamp(1.25rem, 3.5vw, 2rem); */
-        font-size: 4vw;
-        font-weight: 700;
-        margin-bottom: 4rem;
-        margin-top: 3rem;
-        /* color: #333333; */
+    .hero-image {
+        position: absolute;
+        width: 80%;
+        max-width: 400px;
+        height: auto;
+        margin-top: 2rem;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: none;
+    }
+
+    .hero-image-1 {
+        opacity: 0.9;
+        transform: scale(1);
     }
 
     @media (min-width: 768px) {
-        h1 {
+        h1,
+        p {
             font-size: 5rem;
         }
         p {
             font-size: 2.25rem;
-            max-width: 700px;
-        }
-        .projects-text {
-            font-size: 1.75rem;
         }
     }
 </style>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const images = [
+            document.querySelector(".hero-image-1"),
+            document.querySelector(".hero-image-2"),
+            document.querySelector(".hero-image-3"),
+        ];
+
+        let currentIndex = 0;
+
+        function cycleImages() {
+            const currentImage = images[currentIndex];
+            const nextIndex = (currentIndex + 1) % images.length;
+            const nextImage = images[nextIndex];
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    currentIndex = nextIndex;
+                },
+            });
+
+            tl.to(currentImage, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.8,
+                ease: "power2.inOut",
+            }).to(
+                nextImage,
+                {
+                    opacity: 0.9,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: "power2.inOut",
+                },
+                "-=0.4",
+            );
+        }
+
+        setInterval(cycleImages, 3000);
+    });
+</script>

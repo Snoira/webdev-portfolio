@@ -1,7 +1,6 @@
 ---
-import githubCircle from "../../assets/icons/github-circle.svg";
-import linkedin from "../../assets/icons/linkedin.svg";
-import { Image } from "astro:assets";
+import GithubCircle from "@assets/icons/github-circle.svg";
+import Linkedin from "@assets/icons/linkedin.svg";
 
 interface Props {
     icon: "github" | "linkedin";
@@ -9,19 +8,18 @@ interface Props {
     size?: "small" | "medium";
 }
 
-const { icon, url, size} = Astro.props;
+const { icon, url, size } = Astro.props;
 ---
 
-<a href={url} target="_blank" rel="noopener noreferrer" class={size ?? "medium"}>
-    {
-        icon === "github" ? (
-            <Image src={githubCircle} alt="GitHub Icon" />
-        ) : (
-            <Image src={linkedin} alt="LinkedIn Icon" />
-        )
-    }
+<a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={size ?? "medium"}
+>
+    {icon === "github" ? <GithubCircle /> : <Linkedin />}
 </a>
-<style >
+<style>
     a {
         display: inline-block;
         aspect-ratio: 1 / 1;
@@ -29,22 +27,30 @@ const { icon, url, size} = Astro.props;
         place-items: center;
         transition: all 0.3s ease;
         &:hover {
-            transform: scale(1.1);
+            transform: translateY(-2px);
         }
     }
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+    svg {
+        width: 110%;
+        height: 110%;
+        path {
+            stroke: var(--text); 
+        }
     }
-    
+
     a.small {
         width: 24px;
     }
 
     a.medium {
         width: 32px;
+        transition: all 0.3s ease;
+        &:hover {
+            transform: scale(1.2);
+            path {
+                stroke: var(--primary);
+            }
+        }
     }
-
 </style>

@@ -4,16 +4,18 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@fontsource/libre-baskerville": "^5.2.8",
     "@fontsource/libre-franklin": "^5.2.8",
     "astro": "^5.14.3",
     "gsap": "^3.13.0",
-    "sharp": "^0.34.4"
+    "sharp": "^0.34.4",
+    "typescript": "^5.9.3"
   },
   "packageManager": "yarn@4.10.3"
 }

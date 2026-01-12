@@ -1,10 +1,8 @@
 ---
-import "@fontsource/libre-baskerville/400.css";
-import "@fontsource/libre-franklin/400.css";
-import "@fontsource/libre-franklin/700.css";
-import "@fontsource/libre-franklin/900.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import "@styles/plein.css";
+import "@styles/switzer.css";
 ---
 
 <!doctype html>
@@ -31,24 +29,29 @@ import Footer from "../components/Footer.astro";
 		width: 100%;
 		min-height: 100%;
 		--text: #2b323f;
-		--background: #fdfcfa;
+		--background: #fdf7ec;
+		--primary: #fc7753;
 		background: var(--background);
 		color: var(--text);
-		font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+		font-family: "Switzer", Arial, Helvetica, sans-serif;
 	}
 
 	* {
-		/* outline: 10px solid green; */
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
 
+	h1,
 	h2 {
-		font-size: 1.5rem;
-		margin-bottom: 1rem;
-		font-family: "Libre Baskerville", serif;
+		font-family: "Plein", Arial, Helvetica, sans-serif;
 	}
+
+	h2 {
+		text-align: center;
+		font-size: clamp(2rem, 6cqw, 3rem);
+	}
+
 	p {
 		font-size: clamp(1rem, 2vw, 1.5rem);
 		font-size: 1rem;

@@ -1,0 +1,28 @@
+/**
+* @license
+*
+* Font Family: Plein
+* Designed by: Inga Plönnigs
+* URL: https://www.fontshare.com/fonts/plein
+* © 2026 Indian Type Foundry
+*
+*/
+/* Plein Variable Font - Normal */
+@font-face {
+  font-family: 'Plein';
+  src: url('../../fonts/Plein_Complete/Plein-Variable.woff2') format('woff2'),
+       url('../../fonts/Plein_Complete/Plein-Variable.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+/* Plein Variable Font - Italic */
+@font-face {
+  font-family: 'Plein';
+  src: url('../../fonts/Plein_Complete/Plein-VariableItalic.woff2') format('woff2'),
+       url('../../fonts/Plein_Complete/Plein-VariableItalic.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: italic;
+}
+

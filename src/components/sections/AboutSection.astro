@@ -1,51 +1,38 @@
 ---
 import { Image } from "astro:assets";
-import portrait_1 from "../../assets/about/portrait_1.PNG";
-import portrait_2 from "../../assets/about/portrait_2.PNG";
-import portrait_3 from "../../assets/about/portrait_3.PNG";
-import portrait_4 from "../../assets/about/portrait_4.PNG";
+import portrait_1 from "@assets/images/about/portrait_1.PNG";
+import portrait_2 from "@assets/images/about/portrait_2.PNG";
+import portrait_3 from "@assets/images/about/portrait_3.PNG";
+import portrait_4 from "@assets/images/about/portrait_4.PNG";
+import cv from "@assets/documents/CV.pdf";
 ---
 
 <section class="about" id="about">
     <div class="image-container">
-        <Image
-            src={portrait_1}
-            alt="Portrait of Nora trying to be serious"
-            class="about-image"
-        />
-        <Image
-            src={portrait_2}
-            alt="Portrait of Nora starting to crack a smile"
-            class="about-image"
-        />
-        <Image
-            src={portrait_3}
-            alt="Portrait of Nora starting to laugh"
-            class="about-image"
-        />
-        <Image
-            src={portrait_4}
-            alt="Portrait of Nora laughing"
-            class="about-image"
-        />
+        {
+            [portrait_1, portrait_2, portrait_3, portrait_4].map((portrait) => (
+                <Image
+                    src={portrait}
+                    alt="Portrait of Nora"
+                    class="about-image"
+                />
+            ))
+        }
     </div>
     <div class="text-container">
         <h2>About Me</h2>
         <p>
-            I&#39;m a junior full-stack JavaScript developer. I recently
-            graduated from Nackademin&#39;s Fullstack Web Development program,
-            which concluded with a six-month internship at Funnel.
-            <!-- <br /><br /> -->
-            <!-- Before becoming a developer, I set out to tackle global issues
-						by studying Environmental Science, including biology and
-						geography. Eventually, I realized I preferred solving smaller,
-						more hands-on problems in code, as well as the collaborative
-						nature of being a developer, which led me to change direction. -->
-            <br /><br />
-            Other than coding, I've also found an interest in web design and user
-            experience (UX). I'm excited to explore this further and incorporate
-            design principles into my development work.
+            I&#39;m a junior full-stack developer with a background in
+            environmental science and social geography. This unique combination
+            of skills allows me to approach web development with a holistic
+            perspective, considering both technical and human factors.
+            <br />
+            Today, I enjoy creating clean, user-friendly web applications that have
+            a positive impact - even if it&#39;s simply by making someone smile.
         </p>
+        <a href={cv} target="_blank" rel="noopener noreferrer" class="cv-link"
+            >See my CV for more</a
+        >
     </div>
 </section>
 
@@ -56,8 +43,8 @@ import portrait_4 from "../../assets/about/portrait_4.PNG";
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        padding: 50px 1rem;
-        padding-top: 100px;
+        padding: 50px 2rem;
+        background-color: #c9ddff;
     }
     .image-container {
         display: grid;
@@ -73,14 +60,45 @@ import portrait_4 from "../../assets/about/portrait_4.PNG";
         object-fit: cover;
         filter: grayscale(100%);
         -webkit-filter: grayscale(100%);
-        /* border-radius: 8px; */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .text-container {
-        text-align: center;
         max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    @media (min-width: 700px) {
+    .cv-link {
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border: 1px solid #dd6949;
+        background-color: var(--primary);
+        color: var(--background);
+
+        border-radius: 4px;
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+        display: inline-block;
+        margin-top: 1rem;
+        &:hover {
+            border: 1px solid #536079;
+            background-color: var(--text);
+            color: var(--background);
+        }
+    }
+
+    h2 {
+        font-size: clamp(2rem, 6cqw, 3rem);
+    }
+    p {
+        line-height: 1.6;
+        margin: 1rem 0;
+    }
+
+    @media (min-width: 768px) {
         .about {
             gap: 4rem;
             padding: 100px 10%;
@@ -91,12 +109,10 @@ import portrait_4 from "../../assets/about/portrait_4.PNG";
             max-width: 320px;
         }
         .text-container {
-            text-align: left;
             max-width: 650px;
-			min-width: 300px;
+            min-width: 300px;
             flex: 1;
+            align-items: flex-start;
         }
     }
-
-
 </style>
