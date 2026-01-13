@@ -3,21 +3,43 @@ import GithubCircle from "@assets/icons/github-circle.svg";
 import Linkedin from "@assets/icons/linkedin.svg";
 
 interface Props {
-    icon: "github" | "linkedin";
-    url: string;
+    platform: "github" | "linkedin";
+    url?: string;
     size?: "small" | "medium";
 }
 
-const { icon, url, size } = Astro.props;
----
+const { platform, url, size } = Astro.props as Props;
 
+const defaultUrls = {
+    github: "https://www.github.com/snoira",
+    linkedin: "https://se.linkedin.com/in/nora-velde-440661297",
+};
+
+const defaultAriaLabels = {
+    github: "Visit GitHub Profile",
+    linkedin: "Visit LinkedIn Profile",
+};
+
+const getAriaLabel = () => {
+    if (url) {
+        const repo = url.split("Snoira/").pop() || "";
+        console.log(repo);
+        return platform === "github" ? `Visit GitHub repository ${repo}` : "Visit LinkedIn profile";
+    }
+    return defaultAriaLabels[platform];
+};
+---
 <a
-    href={url}
+    href={url ? url : defaultUrls[platform]}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={getAriaLabel()}
     class={size ?? "medium"}
 >
-    {icon === "github" ? <GithubCircle /> : <Linkedin />}
+    {platform === "github" ? 
+        <GithubCircle aria-hidden="true" /> : 
+        <Linkedin aria-hidden="true" />
+    }
 </a>
 <style>
     a {
@@ -25,7 +47,6 @@ const { icon, url, size } = Astro.props;
         aspect-ratio: 1 / 1;
         display: grid;
         place-items: center;
-        transition: all 0.3s ease;
         &:hover {
             transform: translateY(-2px);
         }
@@ -40,13 +61,13 @@ const { icon, url, size } = Astro.props;
     }
 
     a.small {
-        width: 24px;
+        width: 26px;
     }
 
     a.medium {
-        width: 32px;
+        width: 34px;
         transition: all 0.3s ease;
-        &:hover {
+        &:hover, &:focus {
             transform: scale(1.2);
             path {
                 stroke: var(--primary);

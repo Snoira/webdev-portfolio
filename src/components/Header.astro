@@ -18,8 +18,8 @@ const sections: string[] = ["About", "Projects", "Contact"];
                 <span></span>
             </div>
         </button>
-        <ul class="nav-menu">
-            <div class="nav-links">
+        <div class="nav-menu">
+            <ul class="nav-links">
                 {
                     sections.map((section, i) => (
                         <li class="nav-item">
@@ -33,19 +33,18 @@ const sections: string[] = ["About", "Projects", "Contact"];
                         </li>
                     ))
                 }
-            </div>
-            <div class="social-links">
+            </ul>
+            <ul class="social-links">
                 <li>
-                    <IconLink icon="github" url="https://github.com/snoira" />
+                    <IconLink platform="github" />
                 </li>
                 <li>
                     <IconLink
-                        icon="linkedin"
-                        url="https://www.linkedin.com/in/nora-velde-440661297/"
+                        platform="linkedin"
                     />
                 </li>
-            </div>
-        </ul>
+            </ul>
+        </div>
     </nav>
 </header>
 
@@ -92,6 +91,10 @@ const sections: string[] = ["About", "Projects", "Contact"];
         text-decoration: none;
         color: inherit;
     }
+    ul{
+        list-style: none;
+        padding: 0;
+    }
 
     header {
         display: flex;
@@ -112,7 +115,6 @@ const sections: string[] = ["About", "Projects", "Contact"];
     }
 
     .nav-menu {
-        list-style: none;
         display: flex;
         align-items: center;
     }

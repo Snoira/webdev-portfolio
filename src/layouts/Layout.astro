@@ -12,7 +12,8 @@ import "@styles/switzer.css";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+
+		<title>Nora Velde - Full-Stack Developer</title>
 	</head>
 	<body>
 		<Header />
@@ -56,6 +57,21 @@ import "@styles/switzer.css";
 		font-size: clamp(1rem, 2vw, 1.5rem);
 		font-size: 1rem;
 		line-height: 1.5;
+	}
+	a {
+		border-radius: 4px;
+		transition: all 0.2s ease;
+		&:focus {
+			outline: 2px solid var(--primary);
+			outline-offset: 2px;
+		}
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+		&:focus-visible {
+			outline: 2px solid var(--primary);
+			outline-offset: 2px;
+		}
 	}
 
 	body.no-scroll {
