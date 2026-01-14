@@ -70,6 +70,17 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         border: 1px solid rgba(0, 0, 0, 0.1);
         background-color: #b6d494;
         max-width: 1000px;
+        transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        &:hover,
+        &:focus-within {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+            transition:
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+        }
     }
 
     .inner-card {

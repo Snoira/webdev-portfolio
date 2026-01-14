@@ -35,13 +35,14 @@ const projects: MarkdownInstance<ProjectFrontmatter>[] = Object.values(
         display: grid;
         justify-items: center;
         row-gap: 2rem;
-        overflow: hidden;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
-
+    
     @media screen and (min-width: 768px) {
         .projects {
             padding: 6rem 5%;
+        }
+        .grid {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         }
         
     }

@@ -4,7 +4,7 @@ import portrait_1 from "@assets/images/about/portrait_1.PNG";
 import portrait_2 from "@assets/images/about/portrait_2.PNG";
 import portrait_3 from "@assets/images/about/portrait_3.PNG";
 import portrait_4 from "@assets/images/about/portrait_4.PNG";
-import cv from "@assets/documents/CV.pdf";
+import cv from "@assets/documents/CV_1.pdf";
 ---
 
 <section class="about" id="about">
@@ -15,6 +15,8 @@ import cv from "@assets/documents/CV.pdf";
                     src={portrait}
                     alt="Portrait of Nora"
                     class="about-image"
+                    width={336}
+                    height={155}
                 />
             ))
         }
@@ -43,7 +45,7 @@ import cv from "@assets/documents/CV.pdf";
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        padding: 50px 2rem;
+        padding: 75px 2rem;
         background-color: #c9ddff;
     }
     .image-container {
@@ -61,6 +63,7 @@ import cv from "@assets/documents/CV.pdf";
         filter: grayscale(100%);
         -webkit-filter: grayscale(100%);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
     }
     .text-container {
         max-width: 500px;
@@ -73,10 +76,9 @@ import cv from "@assets/documents/CV.pdf";
         text-decoration: none;
         font-weight: 600;
         padding: 0.5rem 1rem;
-        border: 1px solid #dd6949;
-        background-color: var(--primary);
+        border: 1px solid #536079;
+        background-color: var(--text);
         color: var(--background);
-
         border-radius: 4px;
         transition:
             background-color 0.3s ease,
@@ -84,8 +86,8 @@ import cv from "@assets/documents/CV.pdf";
         display: inline-block;
         margin-top: 1rem;
         &:hover {
-            border: 1px solid #536079;
-            background-color: var(--text);
+            border: 1px solid #dd6949;
+            background-color: var(--primary);
             color: var(--background);
         }
     }
@@ -101,7 +103,7 @@ import cv from "@assets/documents/CV.pdf";
     @media (min-width: 768px) {
         .about {
             gap: 4rem;
-            padding: 100px 10%;
+            padding: 6rem 10%;
         }
         .image-container {
             flex: 0 0 30%;
