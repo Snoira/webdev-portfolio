@@ -12,7 +12,77 @@ import "@styles/switzer.css";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+
+		<title>Nora Velde - Full-Stack Developer</title>
+		<meta
+			name="description"
+			content="Nora Velde is a junior full-stack developer specializing in modern web technologies like Astro, Next.js, TypeScript, and React. Creating clean, user-friendly applications with a holistic approach."
+		/>
+		<meta
+			name="keywords"
+			content="full-stack developer, web developer, Astro, Next.js, TypeScript, React, JavaScript, CSS, HTML, modern web development, user-friendly applications, environmental science, social geography"
+		/>
+		<meta name="author" content="Nora Velde" />
+		<meta name="robots" content="index, follow" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://noravelde.com/" />
+		<meta property="og:title" content="Nora Velde - Full-Stack Developer" />
+		<meta
+			property="og:description"
+			content="Junior full-stack developer creating clean, user-friendly web applications with modern technologies like Astro, Next.js, and TypeScript."
+		/>
+		<meta
+			property="og:image"
+			content="https://noravelde.com/og-image.jpg"
+		/>
+		<meta property="og:site_name" content="Nora Velde Portfolio" />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://noravelde.com/" />
+		<meta
+			property="twitter:title"
+			content="Nora Velde - Full-Stack Developer"
+		/>
+		<meta
+			property="twitter:description"
+			content="Junior full-stack developer creating clean, user-friendly web applications with modern technologies like Astro, Next.js, and TypeScript."
+		/>
+		<meta
+			property="twitter:image"
+			content="https://noravelde.com/og-image.jpg"
+		/>
+
+		<link rel="canonical" href="https://noravelde.com/" />
+		<meta name="theme-color" content="#fc7753" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Nora Velde",
+				"jobTitle": "Full-Stack Developer",
+				"description": "Junior full-stack developer specializing in modern web technologies with a background in environmental science and social geography.",
+				"url": "https://noravelde.com",
+				"sameAs": [
+					"https://github.com/Snoira",
+					"https://linkedin.com/in/noravelde"
+				],
+				"knowsAbout": [
+					"JavaScript",
+					"TypeScript",
+					"Astro",
+					"Next.js",
+					"React",
+					"Github Actions",
+					"CSS",
+					"HTML",
+					"Full-Stack Development",
+					"Web Development",
+					"User Experience Design"
+				]
+			}
+		</script>
 	</head>
 	<body>
 		<Header />
@@ -56,6 +126,21 @@ import "@styles/switzer.css";
 		font-size: clamp(1rem, 2vw, 1.5rem);
 		font-size: 1rem;
 		line-height: 1.5;
+	}
+	a {
+		border-radius: 4px;
+		transition: all 0.2s ease;
+		&:focus {
+			outline: 2px solid var(--primary);
+			outline-offset: 2px;
+		}
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+		&:focus-visible {
+			outline: 2px solid var(--primary);
+			outline-offset: 2px;
+		}
 	}
 
 	body.no-scroll {

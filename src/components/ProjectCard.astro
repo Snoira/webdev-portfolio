@@ -11,21 +11,23 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         <div class="content">
             <h1>{title}</h1>
             <p>{description}</p>
-            <ul class="tech-stack">
-                <p>tech stack:</p>
-                {
-                    Array.isArray(techStack) ? (
-                        techStack.map((tech) => <li>{tech}</li>)
-                    ) : (
-                        <li>{techStack}</li>
-                    )
-                }
-            </ul>
+            <div class="tech-stack">
+                <p>Tech stack:</p>
+                <ul class="tech-stack-list">
+                    {
+                        Array.isArray(techStack) ? (
+                            techStack.map((tech) => <li>{tech}</li>)
+                        ) : (
+                            <li>{techStack}</li>
+                        )
+                    }
+                </ul>
+            </div>
         </div>
         <div class="links">
             {
                 githubUrl && (
-                    <IconLink icon="github" url={githubUrl} size="small" />
+                    <IconLink platform="github" url={githubUrl} size="small" />
                 )
             }
             {
@@ -35,6 +37,7 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
                         target="_blank"
                         rel="noopener noreferrer"
                         class="project-link"
+                        aria-label={`Visit website for ${title}`}
                     >
                         Visit website
                         <svg
@@ -62,14 +65,23 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
 
 <style>
     article {
-        container: card / inline-size;
         display: block;
         width: 95%;
         border-radius: 8px;
-        background-color: transparent;
         border: 1px solid rgba(0, 0, 0, 0.1);
         background-color: #b6d494;
         max-width: 1000px;
+        transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        &:hover,
+        &:focus-within {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+            transition:
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+        }
     }
 
     .inner-card {
@@ -77,45 +89,48 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 1.5rem;
+        padding: 1rem 0.5rem;
     }
 
     .content {
         flex: 1;
+        display: flex;
+        flex-direction: column;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 0.5rem 1rem;
+        padding: 0.5rem;
+        gap: 0.5rem;
     }
+
     h1 {
-        margin-bottom: 0.5rem;
-        font-size: clamp(1.5rem, 6cqw, 2rem);
+        font-size: 2rem;
+        line-height: 1.2;
     }
-    p {
-        font-size: clamp(0.9rem, 3cqw, 1rem);
-    }
-    .tech-stack {
-        margin-top: 1rem;
+
+    .tech-stack-list {
         list-style: none;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         gap: 0.5rem;
-        & p {
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
         & li {
             background: rgba(0, 0, 0, 0.1);
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            font-size: clamp(0.9rem, 4cqw, 1rem);
+            font-size: 0.9rem;
         }
+    }
+
+    .tech-stack p {
+        margin-bottom: 0.25rem;
+        width: fit-content;
+        text-wrap: nowrap;
+        font-weight: bold;
     }
 
     .links {
         margin-top: 1rem;
         padding: 0 1rem;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         width: 100%;
         gap: 1rem;
@@ -128,21 +143,24 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         justify-content: space-between;
         text-decoration: none;
         color: inherit;
-        font-size: clamp(0.8rem, 3.7cqw, 1rem);
+        font-size: 0.9rem;
         font-weight: bold;
-        transition: transform 0.2s ease;
         &:hover {
             transform: translateY(-2px);
             text-decoration: underline;
         }
     }
 
-    @container card (max-width: 350px) {
+    @media screen and (min-width: 768px) {
         .inner-card {
-            padding: 1rem 0.5rem;
+            padding: 1rem;
         }
         .content {
             padding: 1rem;
+            gap: 1rem;
+        }
+        .tech-stack p {
+            margin-bottom: 0.5rem;
         }
     }
 </style>
