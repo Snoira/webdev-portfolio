@@ -23,7 +23,6 @@ const defaultAriaLabels = {
 const getAriaLabel = () => {
     if (url) {
         const repo = url.split("Snoira/").pop() || "";
-        console.log(repo);
         return platform === "github" ? `Visit GitHub repository ${repo}` : "Visit LinkedIn profile";
     }
     return defaultAriaLabels[platform];
@@ -53,8 +52,8 @@ const getAriaLabel = () => {
     }
 
     svg {
-        width: 110%;
-        height: 110%;
+        width: 100%;
+        height: auto;
         path {
             stroke: var(--text); 
         }
@@ -62,6 +61,7 @@ const getAriaLabel = () => {
 
     a.small {
         width: 26px;
+        flex-shrink: 0;
     }
 
     a.medium {
