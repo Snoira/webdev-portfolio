@@ -1,5 +1,5 @@
 ---
-import "../../styles/plein.css";
+import "@styles/plein.css";
 import { Image } from "astro:assets";
 import sun from "@assets/images/hero/sun_coral.png";
 import tree from "@assets/images/hero/tree_coral.png";
@@ -21,19 +21,19 @@ import lamp from "@assets/images/hero/lamp_coral.png";
 <style>
     h1,
     p {
-        font-family: "Plein", Arial, Helvetica, sans-serif;
         text-align: center;
         text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
         z-index: 1;
     }
-
+    
     h1 {
         font-weight: 900;
         font-size: 12vw;
         line-height: 1.2;
     }
-
+    
     p {
+        font-family: "Plein", Arial, Helvetica, sans-serif;
         font-weight: 600;
         font-size: clamp(1.25rem, 3.7vw, 2.25rem);
         font-size: 5vw;
