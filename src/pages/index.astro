@@ -10,8 +10,23 @@ import ContactSection from "../components/sections/ContactSection.astro";
 ---
 
 <Layout>
-	<HeroSection />
-	<ProjectsSection />
-	<AboutSection />
-	<ContactSection />
+  <div class="hero-container">
+    <HeroSection />
+    <ProjectsSection />
+  </div>
+  <AboutSection />
+  <ContactSection />
 </Layout>
+
+<style>
+  @media (min-width: 768px) {
+    .hero-container {
+      display: flex;
+      align-items: start;
+      justify-content: space-around;
+      height: 80dvh;
+      overflow: scroll;
+      position: relative;
+    }
+  }
+</style>

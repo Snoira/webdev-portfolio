@@ -8,113 +8,114 @@ import cv from "@assets/documents/CV_1.pdf";
 ---
 
 <section class="about" id="about">
-    <div class="image-container">
-        {
-            [portrait_1, portrait_2, portrait_3, portrait_4].map((portrait) => (
-                <Image
-                    src={portrait}
-                    alt="Portrait of Nora"
-                    class="about-image"
-                    width={336}
-                    height={155}
-                />
-            ))
-        }
-    </div>
-    <div class="text-container">
-        <h2>About Me</h2>
-        <p>
-            I&#39;m a junior full-stack developer with a background in
-            environmental science and social geography. This unique combination
-            of skills allows me to approach web development with a holistic
-            perspective, considering both technical and human factors.
-            <br />
-            Today, I enjoy creating clean, user-friendly web applications that have
-            a positive impact - even if it&#39;s simply by making someone smile.
-        </p>
-        <a href={cv} target="_blank" rel="noopener noreferrer" class="cv-link"
-            >See my CV for more</a
-        >
-    </div>
+  <div class="image-container">
+    {
+      [portrait_1, portrait_2, portrait_3, portrait_4].map((portrait) => (
+        <Image
+          src={portrait}
+          alt="Portrait of Nora"
+          class="about-image"
+          width={336}
+          height={155}
+        />
+      ))
+    }
+  </div>
+  <div class="text-container">
+    <h2>About Me</h2>
+    <p>
+      Frontend-leaning full-stack developer with SaaS experience, strong
+      TypeScript and JavaScript fundamentals, and a user-centric mindset. I have
+      hands-on experience building and shipping production systems using React
+      and API-driven architectures, including CI/CD pipelines and cloud
+      deployments.
+      <br />I love interactive websites with a focus on usability and
+      performance, and I strive to create applications that are both functional
+      and enjoyable to use.
+    </p>
+    <a href={cv} target="_blank" rel="noopener noreferrer" class="cv-link"
+      >See my CV for more</a
+    >
+  </div>
 </section>
 
 <style>
+  .about {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 75px 2rem;
+    background-color: #c9ddff;
+  }
+  .image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    aspect-ratio: 1 / 1;
+    gap: 10px;
+    width: 95%;
+    max-width: 300px;
+  }
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  .text-container {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cv-link {
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 1px solid #536079;
+    background-color: var(--text);
+    color: var(--background);
+    border-radius: 4px;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+    display: inline-block;
+    margin-top: 1rem;
+    &:hover {
+      border: 1px solid #dd6949;
+      background-color: var(--primary);
+      color: var(--background);
+    }
+  }
+
+  h2 {
+    font-size: clamp(2rem, 6cqw, 3rem);
+  }
+  p {
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 768px) {
     .about {
-        display: flex;
-        gap: 2rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 75px 2rem;
-        background-color: #c9ddff;
+      gap: 4rem;
+      padding: 6rem 10%;
     }
     .image-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        aspect-ratio: 1 / 1;
-        gap: 10px;
-        width: 95%;
-        max-width: 300px;
-    }
-    .about-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(100%);
-        -webkit-filter: grayscale(100%);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
+      flex: 0 0 30%;
+      min-width: 250px;
+      max-width: 320px;
     }
     .text-container {
-        max-width: 500px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      max-width: 650px;
+      min-width: 300px;
+      flex: 1;
+      align-items: flex-start;
     }
-
-    .cv-link {
-        text-decoration: none;
-        font-weight: 600;
-        padding: 0.5rem 1rem;
-        border: 1px solid #536079;
-        background-color: var(--text);
-        color: var(--background);
-        border-radius: 4px;
-        transition:
-            background-color 0.3s ease,
-            color 0.3s ease;
-        display: inline-block;
-        margin-top: 1rem;
-        &:hover {
-            border: 1px solid #dd6949;
-            background-color: var(--primary);
-            color: var(--background);
-        }
-    }
-
-    h2 {
-        font-size: clamp(2rem, 6cqw, 3rem);
-    }
-    p {
-        line-height: 1.6;
-        margin: 1rem 0;
-    }
-
-    @media (min-width: 768px) {
-        .about {
-            gap: 4rem;
-            padding: 6rem 10%;
-        }
-        .image-container {
-            flex: 0 0 30%;
-            min-width: 250px;
-            max-width: 320px;
-        }
-        .text-container {
-            max-width: 650px;
-            min-width: 300px;
-            flex: 1;
-            align-items: flex-start;
-        }
-    }
+  }
 </style>
