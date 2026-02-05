@@ -1,121 +1,102 @@
 ---
 import "@styles/plein.css";
+import world from "@assets/images/hero/world.svg";
+import flower_stem from "@assets/images/hero/flower_stem.svg";
+import flower from "@assets/images/hero/flower.svg";
 import { Image } from "astro:assets";
-import sun from "@assets/images/hero/sun_coral.png";
-import tree from "@assets/images/hero/tree_coral.png";
-import lamp from "@assets/images/hero/lamp_coral.png";
 ---
 
 <section class="hero" id="hero">
-    <Image src={sun} alt="Doodle of a sun" class="hero-image hero-image-1" />
-    <Image src={tree} alt="Doodle of a tree" class="hero-image hero-image-2" />
+  <div class="image-container">
+    <Image src={world} alt="Doodle of the world" class="hero-image world" />
     <Image
-        src={lamp}
-        alt="Doodle of a lightbulb"
-        class="hero-image hero-image-3"
+      src={flower_stem}
+      alt="Doodle of a flower stem"
+      class="hero-image flower-stem"
     />
-    <h1 class="text">Hello, I’m Nora!</h1>
-    <p>A junior fullstack developer</p>
+    <Image src={flower} alt="Doodle of a flower" class="hero-image flower" />
+  </div>
+  <div class="text-container">
+    <h1 class="text">Hello, <br />I’m Nora!</h1>
+    <p>
+      A fullstack developer with a background in environmental science and
+      social geography.
+    </p>
+  </div>
 </section>
 
 <style>
+  h1,
+  p {
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+    z-index: 1;
+  }
+
+  h1 {
+    font-weight: 900;
+    /* font-size: 12vw; */
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-family: "Plein", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    /* font-size: clamp(1.25rem, 3.7vw, 2.25rem);
+    font-size: 5vw; */
+    line-height: 1.4;
+    /* max-width: 90%;  */
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0rem;
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .world {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .flower-stem {
+    position: absolute;
+    max-width: 70%;
+    height: auto;
+    bottom: -21.5%;
+    left: 21%;
+  }
+
+  .flower {
+    position: absolute;
+    max-width: 30%;
+    bottom: 0;
+    right: 2%;
+    height: auto;
+  }
+  .text-container {
+    padding: 0rem 1.25rem;
+  }
+
+  @media (min-width: 768px) {
     h1,
     p {
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
-        z-index: 1;
+      font-size: 5rem;
     }
-    
-    h1 {
-        font-weight: 900;
-        font-size: 12vw;
-        line-height: 1.2;
-    }
-    
     p {
-        font-family: "Plein", Arial, Helvetica, sans-serif;
-        font-weight: 600;
-        font-size: clamp(1.25rem, 3.7vw, 2.25rem);
-        font-size: 5vw;
-        line-height: 1.5;
+      font-size: 2.5rem;
     }
-
-    .hero {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 500px;
-        position: relative;
-    }
-
-    .hero-image {
-        position: absolute;
-        width: 80%;
-        max-width: 400px;
-        height: auto;
-        margin-top: 2rem;
-        opacity: 0;
-        transform: scale(0.8);
-        transition: none;
-    }
-
-    .hero-image-1 {
-        opacity: 0.9;
-        transform: scale(1);
-    }
-
-    @media (min-width: 768px) {
-        h1,
-        p {
-            font-size: 5rem;
-        }
-        p {
-            font-size: 2.25rem;
-        }
-    }
+  }
 </style>
-
-<script>
-    import { gsap } from "gsap";
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const images = [
-            document.querySelector(".hero-image-1"),
-            document.querySelector(".hero-image-2"),
-            document.querySelector(".hero-image-3"),
-        ];
-
-        let currentIndex = 0;
-
-        function cycleImages() {
-            const currentImage = images[currentIndex];
-            const nextIndex = (currentIndex + 1) % images.length;
-            const nextImage = images[nextIndex];
-
-            const tl = gsap.timeline({
-                onComplete: () => {
-                    currentIndex = nextIndex;
-                },
-            });
-
-            tl.to(currentImage, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.8,
-                ease: "power2.inOut",
-            }).to(
-                nextImage,
-                {
-                    opacity: 0.9,
-                    scale: 1,
-                    duration: 0.8,
-                    ease: "power2.inOut",
-                },
-                "-=0.4",
-            );
-        }
-
-        setInterval(cycleImages, 3000);
-    });
-</script>
