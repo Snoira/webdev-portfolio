@@ -2,48 +2,48 @@
 import ProjectCard from "../ProjectCard.astro";
 
 const projects: MarkdownInstance<ProjectFrontmatter>[] = Object.values(
-    import.meta.glob("../../projects/*.md", {
-        eager: true,
-    }),
+  import.meta.glob("../../projects/*.md", {
+    eager: true,
+  })
 );
 ---
+
 <section class="projects" id="projects">
-    <h2>My Projects</h2>
-    <div class="grid scroll-reveal">
-        {
-            projects.map((project) => (
-                <ProjectCard {...project.frontmatter} />
-            ))
-        }
-    </div>
+  <h2>My Projects</h2>
+  <div class="grid scroll-reveal">
+    {
+      projects
+        .sort((a, b) => a.frontmatter.order - b.frontmatter.order)
+        .map((project) => <ProjectCard {...project.frontmatter} />)
+    }
+  </div>
 </section>
 
 <style>
+  .projects {
+    padding: none;
+    padding: 4rem 0;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: clamp(2rem, 6cqw, 3rem);
+    margin-bottom: 3rem;
+  }
+
+  .grid {
+    padding: none;
+    display: grid;
+    justify-items: center;
+    row-gap: 2rem;
+  }
+
+  @media screen and (min-width: 768px) {
     .projects {
-        padding: none;
-        padding: 4rem 0;
+      padding: 6rem 5%;
     }
-
-    h2 {
-        text-align: center;
-        font-size: clamp(2rem, 6cqw, 3rem);
-        margin-bottom: 3rem;
-    }
-
     .grid {
-        padding: none;
-        display: grid;
-        justify-items: center;
-        row-gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
-    
-    @media screen and (min-width: 768px) {
-        .projects {
-            padding: 6rem 5%;
-        }
-        .grid {
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        }
-        
-    }
+  }
 </style>

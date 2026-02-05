@@ -1,8 +1,9 @@
 ---
 title: "Ted Duchamp Web page"
-techStack: ["Next.JS", "TypeScript", "Sanity", "Tailwind", "Github Actions"]
+techStack: ["Next.JS", "TypeScript", "Sanity", "Tailwind", "Github Actions", "Netlify"]
 description: "Designed and built a website for the band Ted Duchamp."
 githubUrl: "https://github.com/Snoira/webpage-tedduchamp"
-websiteUrl: "https://tedduchampband.netlify.app/"
+websiteUrl: "https://tedduchamp.com"
 cardColor: "#B6D494"
+order: 1
 ---
