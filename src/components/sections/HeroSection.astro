@@ -1,139 +1,121 @@
 ---
 import "@styles/plein.css";
-// import { Image } from "astro:assets";
-// import sun from "@assets/images/hero/sun_coral.png";
-// import tree from "@assets/images/hero/tree_coral.png";
-// import lamp from "@assets/images/hero/lamp_coral.png";
+import { Image } from "astro:assets";
+import sun from "@assets/images/hero/sun_coral.png";
+import tree from "@assets/images/hero/tree_coral.png";
+import lamp from "@assets/images/hero/lamp_coral.png";
 ---
 
 <section class="hero" id="hero">
-  <!-- <Image src={sun} alt="Doodle of a sun" class="hero-image hero-image-1" />
+    <Image src={sun} alt="Doodle of a sun" class="hero-image hero-image-1" />
     <Image src={tree} alt="Doodle of a tree" class="hero-image hero-image-2" />
     <Image
         src={lamp}
         alt="Doodle of a lightbulb"
         class="hero-image hero-image-3"
-    /> -->
-  <h1 class="text">Hello, I’m Nora!</h1>
-  <p>A frontend-leaning full-stack developer with a user-centric mindset.</p>
+    />
+    <h1 class="text">Hello, I’m Nora!</h1>
+    <p>A junior fullstack developer</p>
 </section>
 
 <style>
-  h1,
-  p {
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
-    /* z-index: 1; */
-  }
-
-  h1 {
-    font-weight: 900;
-    font-size: 12vw;
-    line-height: 1.2;
-  }
-
-  p {
-    font-family: "Plein", Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: clamp(1.25rem, 3.7vw, 2.25rem);
-    font-size: 5vw;
-    line-height: 1.5;
-  }
-
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 500px;
-    position: relative;
-  }
-
-  .hero-image {
-    position: absolute;
-    width: 80%;
-    max-width: 400px;
-    height: auto;
-    margin-top: 2rem;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: none;
-  }
-
-  .hero-image-1 {
-    opacity: 0.9;
-    transform: scale(1);
-  }
-
-  @media (min-width: 768px) {
     h1,
     p {
-      font-size: 5rem;
-      font-size: 4rem;
-      text-align: left;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+        z-index: 1;
     }
-    p {
-      font-size: 1.5rem;
-      color: #2b323fbd;
-    }
-    .hero {
-      position: sticky;
-      top: 0;
-      /* background-color: #c9ddff; */
-      padding: 4rem 1rem;
-      height: 100%;
-      max-width: 500px;
-      align-items: flex-start;
-      justify-content: start;
-      flex-shrink: 1;
-      /* border: 2px solid var(--text); */
-    }
+    
     h1 {
-      margin-top: 5rem;
+        font-weight: 900;
+        font-size: 12vw;
+        line-height: 1.2;
     }
-  }
+    
+    p {
+        font-family: "Plein", Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        font-size: clamp(1.25rem, 3.7vw, 2.25rem);
+        font-size: 5vw;
+        line-height: 1.5;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 500px;
+        position: relative;
+    }
+
+    .hero-image {
+        position: absolute;
+        width: 80%;
+        max-width: 400px;
+        height: auto;
+        margin-top: 2rem;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: none;
+    }
+
+    .hero-image-1 {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    @media (min-width: 768px) {
+        h1,
+        p {
+            font-size: 5rem;
+        }
+        p {
+            font-size: 2.25rem;
+        }
+    }
 </style>
 
 <script>
-  import { gsap } from "gsap";
+    import { gsap } from "gsap";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const images = [
-      document.querySelector(".hero-image-1"),
-      document.querySelector(".hero-image-2"),
-      document.querySelector(".hero-image-3"),
-    ];
+    document.addEventListener("DOMContentLoaded", () => {
+        const images = [
+            document.querySelector(".hero-image-1"),
+            document.querySelector(".hero-image-2"),
+            document.querySelector(".hero-image-3"),
+        ];
 
-    let currentIndex = 0;
+        let currentIndex = 0;
 
-    function cycleImages() {
-      const currentImage = images[currentIndex];
-      const nextIndex = (currentIndex + 1) % images.length;
-      const nextImage = images[nextIndex];
+        function cycleImages() {
+            const currentImage = images[currentIndex];
+            const nextIndex = (currentIndex + 1) % images.length;
+            const nextImage = images[nextIndex];
 
-      const tl = gsap.timeline({
-        onComplete: () => {
-          currentIndex = nextIndex;
-        },
-      });
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    currentIndex = nextIndex;
+                },
+            });
 
-      tl.to(currentImage, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.8,
-        ease: "power2.inOut",
-      }).to(
-        nextImage,
-        {
-          opacity: 0.9,
-          scale: 1,
-          duration: 0.8,
-          ease: "power2.inOut",
-        },
-        "-=0.4"
-      );
-    }
+            tl.to(currentImage, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.8,
+                ease: "power2.inOut",
+            }).to(
+                nextImage,
+                {
+                    opacity: 0.9,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: "power2.inOut",
+                },
+                "-=0.4",
+            );
+        }
 
-    setInterval(cycleImages, 3000);
-  });
+        setInterval(cycleImages, 3000);
+    });
 </script>
