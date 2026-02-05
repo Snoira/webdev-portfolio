@@ -1,6 +1,6 @@
 ---
 import "@styles/plein.css";
-import world from "@assets/images/hero/world.svg";
+import world from "@assets/images/hero/world_color.svg";
 import flower_stem from "@assets/images/hero/flower_stem.svg";
 import flower from "@assets/images/hero/flower.svg";
 import { Image } from "astro:assets";
@@ -21,8 +21,8 @@ import { Image } from "astro:assets";
   <div class="text-container">
     <h1 class="text">Hello, <br />I’m Nora!</h1>
     <p>
-      A fullstack developer with a background in environmental science and
-      social geography.
+      A fullstack developer with a background in <span class="highlight">environmental science</span> and
+      <span class="highlight"> social geography.</span>
     </p>
   </div>
 </section>
@@ -41,6 +41,10 @@ import { Image } from "astro:assets";
     font-size: clamp(3rem, 9vw, 4rem);
   }
 
+  .highlight {
+    color: var(--primary);
+  }
+
   p {
     font-family: "Plein", Arial, Helvetica, sans-serif;
     font-weight: 600;
@@ -56,8 +60,9 @@ import { Image } from "astro:assets";
     justify-content: center;
     align-items: center;
     padding: 4rem 0rem;
-    margin: 0 auto;
+    margin: 0 auto 4rem auto;
     max-width: 600px;
+    
   }
 
   .image-container {
