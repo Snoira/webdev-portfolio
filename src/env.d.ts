@@ -15,6 +15,7 @@ interface ProjectFrontmatter {
   githubUrl: string;
   websiteUrl?: string;
   cardColor: string;
+  order: number;
 }
 
 interface MarkdownInstance<T extends Record<string, any>> {
