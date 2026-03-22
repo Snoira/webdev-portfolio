@@ -4,6 +4,7 @@ import portrait_1 from "@assets/images/about/portrait_1.PNG";
 import portrait_2 from "@assets/images/about/portrait_2.PNG";
 import portrait_3 from "@assets/images/about/portrait_3.PNG";
 import portrait_4 from "@assets/images/about/portrait_4.PNG";
+import frame from "@assets/images/frame.svg";
 import cv from "@assets/documents/CV_Nora_Velde.pdf";
 ---
 
@@ -11,13 +12,16 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
   <div class="image-container">
     {
       [portrait_1, portrait_2, portrait_3, portrait_4].map((portrait) => (
-        <Image
-          src={portrait}
-          alt="Portrait of Nora"
-          class="about-image"
-          width={336}
-          height={155}
-        />
+        <div class="image-wrapper">
+          <Image src={frame} alt="frame" class="frame" />
+          <Image
+            src={portrait}
+            alt="Portrait of Nora"
+            class="about-image"
+            width={336}
+            height={155}
+          />
+        </div>
       ))
     }
   </div>
@@ -27,8 +31,8 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
       Growing up, I&#39;ve always been close to nature - whether climbing,
       skiing, or simply walking the dog in the forest.
       <br />
-      This led me to study Biology and Environmental Science, where I focused on understanding the
-      systems behind climate change at a fundamental level. Later, I shifted toward
+      This led me to study Biology and Environmental Science, where I focused on understanding
+      the systems behind climate change at a fundamental level. Later, I shifted toward
       Social Geography to explore the human side of these systems.
       <br />
       <br />
@@ -48,6 +52,9 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
 </section>
 
 <style>
+  h2 {
+    color: var(--blue);
+  }
   .about {
     display: flex;
     gap: 2rem;
@@ -55,7 +62,15 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
     justify-content: center;
     align-items: center;
     padding: 75px 2rem;
-    background-color: #c9ddff;
+    background-color: #ffead0;
+  }
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-items: center;
   }
   .image-container {
     display: grid;
@@ -65,13 +80,19 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
     width: 95%;
     max-width: 300px;
   }
+  .frame {
+    position: absolute;
+    width: 102%;
+    height: 102%;
+    z-index: 1;
+  }
   .about-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     border-radius: 4px;
   }
   .text-container {
