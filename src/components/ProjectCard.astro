@@ -1,12 +1,13 @@
 ---
 import IconLink from "./ui/IconLink.astro";
+import "@styles/global.css"
 
 interface Props extends ProjectFrontmatter {}
 
 const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
 ---
 
-<article>
+<article class="texture">
     <div class="inner-card">
         <div class="content">
             <h1>{title}</h1>
@@ -70,14 +71,15 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         border-radius: 8px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         /* background-color: #b6d494; */
-        background-color: var(--pink);
+        background-color: #B4C2F8;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         max-width: 1000px;
         transition:
             box-shadow 0.3s ease,
             transform 0.3s ease;
         &:hover,
         &:focus-within {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.2);
             transform: scale(1.02);
             transition:
                 box-shadow 0.3s ease,
