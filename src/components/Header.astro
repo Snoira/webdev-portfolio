@@ -1,245 +1,245 @@
 ---
 import IconLink from "./ui/IconLink.astro";
 import "@styles/plein.css";
+import "@styles/global.css";
 import Stroke from "@assets/images/stroke.svg";
 
 const sections: string[] = ["About", "Projects", "Contact"];
 ---
 
-<header>
-    <h1 class="logo">
-        <a href="#hero">Nora Velde</a>
-    </h1>
-    <nav>
-        <button class="nav-toggle">
-            <div class="bars">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
-        <div class="nav-menu">
-            <ul class="nav-links">
-                {
-                    sections.map((section, i) => (
-                        <li class="nav-item">
-                            <span
-                                class="background-stroke"
-                                style={`--i: ${i % 2 === 0 ? -1 : 1}`}
-                            >
-                                <Stroke />
-                            </span>
-                            <a href={`#${section.toLowerCase()}`}>{section}</a>
-                        </li>
-                    ))
-                }
-            </ul>
-            <ul class="social-links">
-                <li>
-                    <IconLink platform="github" />
-                </li>
-                <li>
-                    <IconLink
-                        platform="linkedin"
-                    />
-                </li>
-            </ul>
-        </div>
-    </nav>
+<header class="texture">
+  <h1 class="logo">
+    <a href="#hero">Nora Velde</a>
+  </h1>
+  <nav>
+    <button class="nav-toggle">
+      <div class="bars">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+    <div class="nav-menu">
+      <ul class="nav-links">
+        {
+          sections.map((section, i) => (
+            <li class="nav-item">
+              <span
+                class="background-stroke"
+                style={`--i: ${i % 2 === 0 ? -1 : 1}`}
+              >
+                <Stroke />
+              </span>
+              <a href={`#${section.toLowerCase()}`}>{section}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="social-links">
+        <li>
+          <IconLink platform="github" />
+        </li>
+        <li>
+          <IconLink platform="linkedin" />
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <script>
-    const navToggle = document.querySelector(".nav-toggle");
-    const nav = document.querySelector("nav");
+  const navToggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("nav");
 
-    if (navToggle === null || nav === null) {
-        throw new Error("Navigation elements not found");
-    }
+  if (navToggle === null || nav === null) {
+    throw new Error("Navigation elements not found");
+  }
 
-    navToggle.addEventListener("click", () => {
-        nav.classList.toggle("show");
-        // Toggle body scroll lock
-        document.body.classList.toggle("no-scroll");
+  navToggle.addEventListener("click", () => {
+    nav.classList.toggle("show");
+    // Toggle body scroll lock
+    document.body.classList.toggle("no-scroll");
+  });
+
+  const navLinks = document.querySelectorAll("nav a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("show");
+      // Re-enable scrolling when nav closes
+      document.body.classList.remove("no-scroll");
     });
+  });
 
-    const navLinks = document.querySelectorAll("nav a");
-    navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            nav.classList.remove("show");
-            // Re-enable scrolling when nav closes
-            document.body.classList.remove("no-scroll");
-        });
-    });
-
-    let resizeTimer: number;
-    window.addEventListener("resize", () => {
-        nav.classList.add("no-transition");
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            if (window.innerWidth > 768) {
-                nav.classList.remove("show");
-                // Re-enable scrolling when switching to desktop
-                document.body.classList.remove("no-scroll");
-            }
-            nav.classList.remove("no-transition");
-        }, 150);
-    });
+  let resizeTimer: number;
+  window.addEventListener("resize", () => {
+    nav.classList.add("no-transition");
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 768) {
+        nav.classList.remove("show");
+        // Re-enable scrolling when switching to desktop
+        document.body.classList.remove("no-scroll");
+      }
+      nav.classList.remove("no-transition");
+    }, 150);
+  });
 </script>
 
 <style>
+  a {
+    text-decoration: none;
+    color: var(--white);
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 60px;
+    padding: 0 10%;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Plein", Arial, Helvetica, sans-serif;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+    font-size: 18px;
+    &:hover .background-stroke {
+      opacity: 0.9;
+    }
     a {
-        text-decoration: none;
-        color: inherit;
+      z-index: 1;
     }
-    ul{
-        list-style: none;
-        padding: 0;
+    & .background-stroke {
+      position: absolute;
+      width: 130%;
+      height: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      transform: rotate(calc(var(--i) * 7deg));
+      path {
+        fill: var(--primary);
+      }
     }
+  }
 
-    header {
+  .social-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+      place-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+
+      & div {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: inherit;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        height: 60px;
-        padding: 0 10%;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 600;
-        font-family: "Plein", Arial, Helvetica, sans-serif;
+        flex-direction: column;
+        gap: 5px;
+        & span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          border-radius: 2px;
+          background-color: var(--white);
+          transition: all 0.3s ease;
+        }
+      }
     }
 
     .nav-menu {
-        display: flex;
-        align-items: center;
+      display: grid;
+      justify-items: start;
+      align-items: end;
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 100vw;
+      height: calc(100dvh - 60px);
+      background-color: var(--blue);
+      gap: 0;
+      padding-left: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(100%);
+      transition: all 0.3s ease;
     }
 
     .nav-links {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .nav-item {
-        display: grid;
-        place-items: center;
-        position: relative;
-        font-size: 18px;
-        &:hover .background-stroke {
-            opacity: 0.9;
-        }
-        a {
-            z-index: 1;
-        }
-        & .background-stroke {
-            position: absolute;
-            width: 130%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            transform: rotate(calc(var(--i) * 7deg));
-            path {
-                fill: var(--primary);
-            }
-        }
+      flex-direction: column;
+      & a {
+        font-size: clamp(2rem, 7vmin, 3rem);
+        width: 100%;
+      }
     }
 
     .social-links {
-        display: none;
+      display: flex;
+      margin-bottom: 2rem;
+      gap: 1.5rem;
     }
 
-    .nav-toggle {
-        display: none;
+    nav.show {
+      & .nav-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        background-image: url(../assets/images/noise-light.png);
+      }
+
+      & .bars span {
+        transition: all 0.3s ease;
+        &:nth-child(1) {
+          transform: translate(0, 8px) rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translate(0, -7px) rotate(-45deg);
+        }
+      }
     }
 
-    @media (max-width: 768px) {
-        .nav-toggle {
-            display: flex;
-            place-items: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            height: 40px;
-            width: 40px;
-
-            & div {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                & span {
-                    display: block;
-                    width: 25px;
-                    height: 3px;
-                    border-radius: 2px;
-                    background-color: var(--text);
-                    transition: all 0.3s ease;
-                }
-            }
-        }
-
-        .nav-menu {
-            display: grid;
-            justify-items: start;
-            align-items: end;
-            position: fixed;
-            top: 60px;
-            right: 0;
-            width: 100vw;
-            height: calc(100dvh - 60px);
-            background-color: var(--background);
-            gap: 0;
-            padding-left: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-        }
-
-        .nav-links {
-            flex-direction: column;
-            & a {
-                font-size: clamp(2rem, 7vmin, 3rem);
-                width: 100%;
-            }
-        }
-
-        .social-links {
-            display: flex;
-            margin-bottom: 2rem;
-            gap: 1.5rem;
-        }
-
-        nav.show {
-            & .nav-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateX(0);
-            }
-
-            & .bars span {
-                transition: all 0.3s ease;
-                &:nth-child(1) {
-                    transform: translate(0, 8px) rotate(45deg);
-                }
-                &:nth-child(2) {
-                    opacity: 0;
-                }
-                &:nth-child(3) {
-                    transform: translate(0, -7px) rotate(-45deg);
-                }
-            }
-        }
-
-        header {
-            padding: 0 20px;
-        }
+    header {
+      padding: 0 20px;
     }
+  }
 
-    nav.no-transition * {
-        transition: none !important;
-    }
+  nav.no-transition * {
+    transition: none !important;
+  }
 </style>
