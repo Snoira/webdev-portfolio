@@ -6,9 +6,10 @@ import portrait_3 from "@assets/images/about/portrait_3.PNG";
 import portrait_4 from "@assets/images/about/portrait_4.PNG";
 import frame from "@assets/images/frame.svg";
 import cv from "@assets/documents/CV_Nora_Velde.pdf";
+import "@styles/global.css"
 ---
 
-<section class="about" id="about">
+<section class="about texture" id="about">
   <div class="image-container">
     {
       [portrait_1, portrait_2, portrait_3, portrait_4].map((portrait) => (
@@ -62,7 +63,7 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
     justify-content: center;
     align-items: center;
     padding: 75px 2rem;
-    background-color: #ffead0;
+    background-color: var(--white);
   }
   .image-wrapper {
     position: relative;
@@ -106,9 +107,9 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem 1rem;
-    border: 1px solid #536079;
-    background-color: var(--text);
-    color: var(--background);
+    border: 2px solid #fcb1b6;
+    background-color: var(--pink);
+    color: var(--text);
     border-radius: 4px;
     transition:
       background-color 0.3s ease,
@@ -116,9 +117,9 @@ import cv from "@assets/documents/CV_Nora_Velde.pdf";
     display: inline-block;
     margin-top: 1rem;
     &:hover {
-      border: 1px solid #dd6949;
-      background-color: var(--primary);
-      color: var(--background);
+      border: 2px solid #FF875C;
+      background-color: var(--red);
+      color: var(--white);
     }
   }
 
