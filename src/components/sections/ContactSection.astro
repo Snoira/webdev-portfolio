@@ -3,62 +3,64 @@ import Input from "../ui/Input.astro";
 ---
 
 <section class="contact" id="contact">
-    <h2>Say Hello</h2>
+  <h2>Say Hello</h2>
 
-    <form class="contact-form" name="contact" method="POST" data-netlify="true">
-        <Input label="Name" id="name" name="name" type="text" required={true} />
-        <Input
-            label="Email"
-            id="email"
-            name="email"
-            type="email"
-            required={true}
-        />
-        <Input
-            label="Message"
-            id="message"
-            name="message"
-            type="textarea"
-            required={true}
-        />
-        <button type="submit">Send</button>
-    </form>
+  <form class="contact-form" name="contact" method="POST" data-netlify="true">
+    <Input label="Name" id="name" name="name" type="text" required={true} />
+    <Input label="Email" id="email" name="email" type="email" required={true} />
+    <Input
+      label="Message"
+      id="message"
+      name="message"
+      type="textarea"
+      required={true}
+    />
+    <button type="submit">Send</button>
+  </form>
 </section>
 
 <style>
-    .contact {
-        display: grid;
-        justify-items: center;
-        padding: 75px 0 150px 0;
-        padding: 5rem 1rem;
-    }
-    h2 {
-        margin-bottom: 3rem;
-    }
+  .contact {
+    display: grid;
+    justify-items: center;
+    padding: 75px 0 150px 0;
+    padding: 5rem 1rem;
+  }
+  h2 {
+    margin-bottom: 3rem;
+  }
 
-    form {
-        display: grid;
-        gap: 1rem;
-        width: 100%;
-        max-width: 600px;
-    }
+  form {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+  }
 
-    button {
-        padding: 0.5rem 1rem;
-        padding: 1rem 2rem;
-        border: 1px solid #536079;
-        background-color: var(--text);
-        color: var(--background);
-        cursor: pointer;
-        border-radius: 4px;
-        transition: background-color 0.3s ease color 0.3s ease;
-        font-size: 1.2rem;
-        font-weight: 600;
-    }
+  button {
+    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
+    border: 2px solid var(--lighten);
+    background-color: var(--pink);
+    color: var(--text);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease color 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: var;
+  }
 
-    button:hover {
-        border: 1px solid #dd6949;
-        background-color: var(--primary);
-        color: var(--background);
-    }
+  button:hover {
+    border: 2px solid var(--lighten);
+    background-color: var(--red);
+    color: var(--white);
+  }
+  button:focus {
+    outline-offset: 2px;
+    outline: 2px solid var(--pink);
+    border: 2px solid var(--lighten);
+    background-color: var(--red);
+    color: var(--white);
+  }
 </style>
