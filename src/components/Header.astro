@@ -105,6 +105,7 @@ const sections: string[] = ["About", "Projects", "Contact"];
     z-index: 10;
     height: 60px;
     padding: 0 10%;
+    border-bottom: 5px double var(--white);
   }
 
   .logo {
@@ -157,13 +158,14 @@ const sections: string[] = ["About", "Projects", "Contact"];
 
   @media (max-width: 768px) {
     .nav-toggle {
-      display: flex;
+      display: grid;
       place-items: center;
       background: none;
       border: none;
       cursor: pointer;
       height: 40px;
       width: 40px;
+      border-radius: 4px;
 
       & div {
         display: flex;
@@ -177,6 +179,10 @@ const sections: string[] = ["About", "Projects", "Contact"];
           background-color: var(--white);
           transition: all 0.3s ease;
         }
+      }
+      &:focus {
+        outline: 2px solid var(--pink);
+        outline-offset: 2px;
       }
     }
 
