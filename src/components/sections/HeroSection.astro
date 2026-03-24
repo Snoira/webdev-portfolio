@@ -15,7 +15,7 @@ import "@styles/plein.css";
 <style>
   h1,
   p {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: var(--shadow-text);
     color: var(--white);
     text-align: center;
   }
@@ -26,7 +26,7 @@ import "@styles/plein.css";
   }
 
   .highlight {
-    color: #fa888f;
+    color: var(--pink);
   }
 
   p {
@@ -43,16 +43,15 @@ import "@styles/plein.css";
     justify-content: center;
     align-items: center;
     padding: 4rem 0.5rem;
-    margin: 0 auto 4rem auto;
+    margin-bottom: 4rem;
     min-height: 60dvh;
   }
-
 
   @media (min-width: 768px) {
     h1 {
       font-size: 6rem;
     }
-    p{
+    p {
       margin-top: 1rem;
       font-size: 2rem;
       max-width: 800px;
