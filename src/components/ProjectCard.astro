@@ -69,8 +69,8 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         display: block;
         width: 95%;
         border-radius: 8px;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        background-color: var(--blue-light);
+        border: 2px solid var(--lighten);
+        background-color: var(--light-blue);
         box-shadow: var(--shadow);
         max-width: 1000px;
         transition:
@@ -98,7 +98,7 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         flex: 1;
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--darken);
         padding: 0.5rem;
         gap: 0.5rem;
     }
@@ -116,7 +116,7 @@ const { title, description, techStack, githubUrl, websiteUrl } = Astro.props;
         align-items: center;
         gap: 0.5rem;
         & li {
-            background: rgba(0, 0, 0, 0.1);
+            background: var(--darken);
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
             font-size: 0.9rem;

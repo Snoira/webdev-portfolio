@@ -97,18 +97,16 @@ import "@styles/global.css";
     width: 100%;
     min-height: 100%;
     --text: #151613;
-    --background: #fdf7ec;
-    --background-white: #fff5e8;
-    --primary: #fc7753;
     --blue: #133dc2;
-    --blue-light: #b4c2f8;
+    --light-blue: #b4c2f8;
     --white: #ffead0;
     --yellow: #f9b836;
     --orange: #f9a336;
     --pink: #fa888f;
-    --pink-light: #fcb1b6;
     --red: #ff6b37;
-    --red-light: #ff875c;
+
+    --darken: rgba(0, 0, 0, 0.1);
+    --lighten: rgba(255, 255, 255, 0.2);
 
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -133,7 +131,7 @@ import "@styles/global.css";
   h2 {
     text-align: center;
     font-size: clamp(2rem, 6cqw, 3rem);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: var(--shadow-text);
   }
 
   p {
