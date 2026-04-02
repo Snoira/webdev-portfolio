@@ -1,0 +1,253 @@
+---
+import { Image } from "astro:assets";
+import flowers from "@assets/images/flowers/flowers.png";
+import flower_core from "@assets/images/flowers/flower_core.png";
+import bud_left from "@assets/images/flowers/bud_left.png";
+import bud_right from "@assets/images/flowers/bud_right.png";
+
+const images = import.meta.glob(
+  "/src/assets/images/flowers/petals/*.{png,jpg,jpeg,webp}",
+  {
+    eager: true,
+  }
+);
+
+const petals = Object.values(images).map((img) => img.default);
+---
+
+<div class="image-container">
+  <Image
+    src={flowers}
+    alt="three flowers on stems. The center one is animated and made up of several different parts"
+    id="flowers"
+    class="doodle image"
+    width={800}
+    height={800}
+  />
+  <div class="flower">
+    <div class="wrapper">
+      <div class="petal-container">
+        {
+          petals.map((src, i) => {
+            //             transform:
+            // rotate(${angle}deg)
+            // translateY(${radius}%)
+            // rotate(${step}deg);
+            return (
+              <div>
+                <Image
+                  src={src}
+                  alt={`petal-${i}`}
+                  class={`petal petal${i + 1}`}
+                  width={500}
+                  height={500}
+                />
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <Image
+      src={flower_core}
+      alt="yellow flower head"
+      id="core"
+      class="doodle core"
+      width={80}
+      height={80}
+    />
+    <div class="bud">
+      <Image
+        src={bud_left}
+        alt="left flower bud petal"
+        id="bud"
+        class="doodle bud_left"
+        width={67}
+        height={96}
+      />
+      <Image
+        src={bud_right}
+        alt="right flower bud petal"
+        class="doodle bud_right"
+        width={67}
+        height={117}
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  const flowers = document.getElementById("flowers");
+
+  if (flowers === null) {
+    throw new Error("Bud element not found");
+  }
+
+  const flowersHeight = flowers.offsetHeight;
+
+  function budAnimationLeft(flowersHeight: number) {
+    const tl = gsap.timeline({ defaults: { duration: 1 } });
+
+    tl.to(".bud_left", {
+      rotation: -15,
+      y: 5,
+      duration: 1,
+      yoyo: true,
+      repeat: 2,
+    });
+    tl.to(".bud_left", {
+      rotation: -100,
+      y: flowersHeight * 0.55,
+
+      duration: 1,
+    });
+    tl.to(".bud_left", {
+      opacity: 0,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 4,
+    });
+
+    return tl;
+  }
+  function budAnimationRight(flowersHeight: number) {
+    const tl = gsap.timeline({ defaults: { duration: 1 } });
+
+    tl.to(".bud_right", {
+      rotation: 15,
+      y: 5,
+      x: 10,
+      yoyo: true,
+      repeat: 2,
+    });
+
+    tl.to(".bud_right", {
+      rotation: 120,
+      y: flowersHeight * 0.55,
+      duration: 1,
+    });
+
+    tl.to(".bud_right", {
+      opacity: 0,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 4,
+    });
+
+    return tl;
+  }
+
+  function petalAnimation() {
+    const tl = gsap.timeline({ defaults: { duration: 1 } });
+    tl.from(".petal", {
+      scale: 0.1,
+      autoAlpha: 0,
+      stagger: {
+        amount: 1.5,
+        from: "random",
+      },
+    });
+
+    tl.to(".petal", {
+      scale: 1,
+      autoAlpha: 1,
+      stagger: {
+        amount: 1.5,
+        from: "random",
+      },
+    });
+
+    tl.to(".flower", {
+      skewX: -7,
+      duration: 0.5,
+    });
+    return tl;
+  }
+
+  const mainTimeline = gsap.timeline({
+    paused: true,
+  });
+
+  mainTimeline
+    .add(budAnimationLeft(flowersHeight), 0)
+    .add(budAnimationRight(flowersHeight), 0)
+    .add(petalAnimation());
+  mainTimeline.play();
+</script>
+
+<style>
+  .flower {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    left: 40%;
+    top: 6.5%;
+    width: 45%;
+    aspect-ratio: 1/1;
+  }
+  .core,
+  .petals,
+  .bud {
+    position: absolute;
+  }
+  .core {
+    width: 22%;
+    height: auto;
+  }
+  .bud {
+    display: flex;
+    align-items: end;
+    width: 80px;
+
+    position: relative;
+    width: 35%;
+    aspect-ratio: 1/1;
+  }
+  .bud_right {
+    position: absolute;
+    width: 60%;
+    height: auto;
+    right: 0;
+    bottom: 0;
+    rotate: -5deg;
+  }
+  .bud_left {
+    width: 60%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    rotate: 10deg;
+  }
+
+  .petal-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .petal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .image {
+    width: 95%;
+    height: auto;
+  }
+  .image-container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+  }
+  .wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+</style>
